@@ -81,10 +81,6 @@
 
     @media (min-width: 992px) { .f-carousel__slide {  --f-carousel-slide-width: calc(100% / 6); } }
 
-    @media (min-width: 1200px) { .f-carousel__slide {  --f-carousel-slide-width: calc(100% / 7); } }
-
-    @media (min-width: 1400px) { .f-carousel__slide {  --f-carousel-slide-width: calc(100% / 7); } }
-
     .f-carousel__slide {    
     --f-carousel-spacing: 0;
     --f-carousel-slide-padding: 0 1rem;

@@ -44,9 +44,11 @@
 </script>
 
 <style>
-    .brands-shops .f-carousel__slide.item{
-        --f-carousel-slide-width: calc(100% / 6);
-    }
+    @media (max-width: 576px) { .brands-shops .f-carousel__slide.item {  --f-carousel-slide-width: calc(100% / 2); } }
+
+    @media (min-width: 768px) { .brands-shops  .f-carousel__slide.item {  --f-carousel-slide-width: calc(100% / 3); } }
+
+    @media (min-width: 992px) { .brands-shops .f-carousel__slide.item {  --f-carousel-slide-width: calc(100% / 5); } }
 
     .border-f-carousel-light {        
         --bs-border-opacity: 1;
@@ -55,8 +57,7 @@
         border-top-color: rgba(var(--bs-light-rgb), var(--bs-border-opacity))!important;
     }
 
-    .brands-shops .f-carousel__slide.item {    
-    --f-carousel-slide-width: calc(100% / 6);
+    .brands-shops .f-carousel__slide.item {  
     --f-carousel-spacing: 0;
     --f-carousel-slide-padding: 0 1rem;
 
@@ -79,10 +80,5 @@
         rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     }
 
-    @media screen and (min-width: 640px) {
-        .brands-shops .f-carousel__slide.item{
-            --f-carousel-slide-width: calc(100% / 6);
-        }
-    }
 
 </style>

@@ -21,9 +21,9 @@
                 <div class="tab-pane fade"   v-for="(category,index) in categories" :key="category.id" :id="'topCategory-'+category.id" :class="{ 'active show' : (index == 0)}">
 
                     <div class="product-grid">
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4" >
+                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-1" >
                             <div class="col" v-for="product in category.products" :key="product.id">
-                                <div class="card h-100 shadow-sm border">
+                                <div class="card h-100 shadow-sm rounded-1">
                                     <div class="position-relative overflow-hidden">
                                         <div class="add-cart position-absolute top-0 end-0 mt-3 me-3">
                                             <a href="javascript:;"><i class='bx bx-cart-add' ></i></a>

@@ -1,22 +1,24 @@
 <template>
-        <section class="py-4">
+        <section class="pt-4 pb-5">
             <div class="container-fluid">
                 <div class="separator pb-4">
                     <div class="line"></div>
-                    <h5 class="mb-0 fw-bold separator-title">Browse Catergory</h5>
+                    <h5 class=" mb-0 fw-bold separator-title">Browse Catergory</h5>
                     <div class="line"></div>
                 </div>
 
                 <div class="product-grid f-carousel" id="browseCategory">
-                    <div class="browse-category f-carousel__viewport">
-                        <inertia-link :href="route('salonpe.aboutus')" class="item f-carousel__slide" v-for="category in categories" :key="category.id" >
-                            <div class="card  shadow-sm border rounded-0" style="height:20em;">
-                                <div class="card-body p-5 bg-thumb-cover" :style="{ backgroundImage : `url(${category.image})`}"> </div>
-                                <div class="card-footer text-center bg-transparent border">
+                    <div class="f-carousel__viewport px-12">
+                        <div class="f-carousel__slide shadow-sm  border  p-0" v-for="category in categories" :key="category.id">
+                            <div class="card rounded-0" style="height:20em  !important">
+                                <div class="position-relative overflow-hidden">
+                                    <div class="bg-thumb-cover" :style="{ backgroundImage : `url(${category.image})` , padding : '15em'}" ></div>
+                                </div>
+                                <div class="card-body d-flex  flex-column">                                    
                                     <h6 class="mb-0 text-uppercase fw-bold">{{ category.name }}</h6>
                                 </div>
-                            </div>
-                        </inertia-link>                       
+                            </div>            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,10 +37,6 @@
         mounted () {
             new Carousel(document.getElementById('browseCategory'), {
                Navigation:false,
-               infinite: false,
-               center: false,
-               slidesPerPage: 'auto',
-               transition:true,
                Dots: true
            });
         }
@@ -46,9 +44,11 @@
 </script>
 
 <style>
-    .browse-category .f-carousel__slide.item{
-        --f-carousel-slide-width: calc(100% / 5);
-    }
+    @media (max-width: 576px) { .browse-category  .f-carousel__slide.item {  --f-carousel-slide-width: calc(100% / 2); } }
+
+    @media (min-width: 768px) { .browse-category  .f-carousel__slide.item {  --f-carousel-slide-width: calc(100% / 3); } }
+
+    @media (min-width: 992px) { .browse-category  .f-carousel__slide.item {  --f-carousel-slide-width: calc(100% / 5); } }
 
     .border-f-carousel-light {        
         --bs-border-opacity: 1;
@@ -58,7 +58,6 @@
     }
 
     .browse-category .f-carousel__slide.item {    
-    --f-carousel-slide-width: calc(100% / 5);
     --f-carousel-spacing: 0;
     --f-carousel-slide-padding: 0 1rem;
 
@@ -79,12 +78,6 @@
     --f-button-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
         rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
         rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    }
-
-    @media screen and (min-width: 640px) {
-        .browse-category .f-carousel__slide.item{
-            --f-carousel-slide-width: calc(100% / 5);
-        }
     }
 
 </style>
