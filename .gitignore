@@ -17,3 +17,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+.htaccess
+.user.ini
+php.ini
+/public/error_log
+/blog-google-calendar
+/backup
