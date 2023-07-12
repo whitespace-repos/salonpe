@@ -1,0 +1,25 @@
+@import '@/assets/js/vendor/uploader/image-uploader.min.css';
+.bg-thumb{
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+.bg-thumb-cover{
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+::-webkit-scrollbar {   width: 7px;  }
+/* Track */
+::-webkit-scrollbar-track {   background: #e9e9e9;  }  
+/* Handle */
+::-webkit-scrollbar-thumb {   background: #565555;  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {    background: #404040;  }
+
+.v-toast__item .v-toast__text{ padding:10px 20px !important}
+.v-toast__item { min-height: 3em !important; }
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+    -tw-ring-shadow: none !important;
+}

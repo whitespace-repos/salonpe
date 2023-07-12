@@ -1,0 +1,356 @@
+<template>
+    <Head title="Home" />
+	<WebLayout>
+        <!-- Main Crousel -->
+        <MainCarousel  :banners="banners"/>
+
+        <!--start pramotion-->
+        <section class="py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4">
+                    <div class="col">
+                        <div class="card rounded-0 shadow-none bg-info bg-opacity-25">
+                            <div class="row g-0 align-items-center">
+                                <div class="col">
+                                    <img src="@/assets/web/images/promo/01.png" class="img-fluid" alt="" />
+                                </div>
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase fw-bold">Men Wear</h5>
+                                        <p class="card-text text-uppercase">Starting at $9</p>
+                                        <a href="javascript:;" class="btn btn-outline-dark btn-ecomm">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card rounded-0 shadow-none bg-danger bg-opacity-25">
+                            <div class="row g-0 align-items-center">
+                                <div class="col">
+                                    <img src="@/assets/web/images/promo/02.png" class="img-fluid" alt="" />
+                                </div>
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase fw-bold">Women Wear</h5>
+                                        <p class="card-text text-uppercase">Starting at $9</p>	<a href="javascript:;" class="btn btn-outline-dark btn-ecomm">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card rounded-0 shadow-none bg-warning bg-opacity-25">
+                            <div class="row g-0 align-items-center">
+                                <div class="col">
+                                    <img src="@/assets/web/images/promo/03.png" class="img-fluid" alt="" />
+                                </div>
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase fw-bold">Kids Wear</h5>
+                                        <p class="card-text text-uppercase">Starting at $9</p><a href="javascript:;" class="btn btn-outline-dark btn-ecomm">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </section>
+        
+        <!-- Featured Products -->
+        <Carousel :products="FeaturedProducts.products" :heading="'FEATURED PRODUCTS'" @selected-product="quickPreview" :id="'featuredProducts'" :timeout="3000"/>
+        
+		<!-- Top Categories -->
+        <TopCategories :categories="TopCategories.categories" @selected-product="quickPreview"/>
+        
+        <!-- Best Selling -->
+        <Carousel :products="BestSelling.products" :heading="'Best Selling'" @selected-product="quickPreview" :id="'bestSellingProducts'" :timeout="3500"/>
+
+        <!-- Best Offers -->
+        <Carousel :products="BestOffer.products" :heading="'Best Offers'" @selected-product="quickPreview" :id="'bestOffersProducts'" :timeout="5500"/>
+       
+        <!--start Advertise banners-->
+        <section class="py-4 bg-dark">
+            <div class="container">
+                <div class="add-banner">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4">
+                        <div class="col d-flex">
+                            <div class="card rounded-0 w-100 border-0 shadow-none">
+                                <img src="@/assets/web/images/promo/04.png" class="img-fluid" alt="...">
+                                <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-10%</span>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Sunglasses Sale</h5>
+                                    <p class="card-text">See all Sunglasses and get 10% off at all Sunglasses</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">SHOP BY GLASSES</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex">
+                            <div class="card rounded-0 w-100 border-0 shadow-none">
+                                <img src="@/assets/web/images/promo/08.png" class="img-fluid" alt="...">
+                                <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-80%</span>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Cosmetics Sales</h5>
+                                    <p class="card-text">Buy Cosmetics products and get 30% off at all Cosmetics</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">SHOP BY COSMETICS</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex">
+                            <div class="card rounded-0 w-100 border-0 shadow-none">
+                                <img src="@/assets/web/images/promo/06.png" class="img-fluid h-100" alt="...">
+                                <div class="card-img-overlay text-center top-20">
+                                    <div class="border border-white border-2 py-3 bg-dark-3">
+                                        <h5 class="card-title text-white">Fashion Summer Sale</h5>
+                                        <p class="card-text text-uppercase fs-1 lh-1 mt-3 mb-2 text-white">Up to 80% off</p>
+                                        <p class="card-text fs-5 text-white">On Top Fashion Brands</p>	<a href="javascript:;" class="btn btn-white btn-ecomm">SHOP BY FASHION</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex">
+                            <div class="card rounded-0 w-100 border-0 shadow-none">
+                                <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-50%</span>
+                                </div>
+                                <img src="@/assets/web/images/promo/07.png" class="img-fluid" alt="...">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fs-2 fw-bold text-uppercase">Super Sale</h5>
+                                    <p class="card-text text-uppercase fs-5 lh-1 mb-2">Up to 50% off</p>
+                                    <p class="card-text">On All Electronic</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">HURRY UP!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Browse categories -->
+        <CategoryCarousel :categories="browseCategories.categories"/>
+        
+        <!--start support info-->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+                    <div class="col">
+                        <div class="text-center border p-3 bg-white">
+                            <div class="font-50 text-dark"><i class='bx bx-cart-add' ></i>
+                            </div>
+                            <h5 class="fs-5 text-uppercase mb-0 fw-bold">Free delivery</h5>
+                            <p class="text-capitalize">Free delivery over $199</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-center border p-3 bg-white">
+                            <div class="font-50 text-dark"><i class='bx bx-credit-card'></i>
+                            </div>
+                            <h5 class="fs-5 text-uppercase mb-0 fw-bold">Secure payment</h5>
+                            <p class="text-capitalize">We possess SSL / Secure сertificate</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-center border p-3 bg-white">
+                            <div class="font-50 text-dark">	<i class='bx bx-dollar-circle'></i>
+                            </div>
+                            <h5 class="fs-5 text-uppercase mb-0 fw-bold">Free returns</h5>
+                            <p class="text-capitalize">We return money within 30 days</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-center border p-3 bg-white">
+                            <div class="font-50 text-dark">	<i class='bx bx-support'></i>
+                            </div>
+                            <h5 class="fs-5 text-uppercase mb-0 fw-bold">Customer Support</h5>
+                            <p class="text-capitalize">Friendly 24/7 customer support</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </section>
+        
+
+        <!--Top brands-->        
+        <TopBrands  :heading="'Top Brands'" :id="'topBrands'" :brands="shopByBrands.brands"/>
+        <!--end brands-->
+
+        <div class="modal fade" id="QuickViewProduct" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-xl-down">            
+                <div class="modal-content rounded-0 border-0">
+                    <div class="modal-body" v-if="quickPreviewProduct != null">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                        <div class="row g-0">
+                            <div class="col-12 col-lg-5">
+                                <div class="image-zoom-section">
+                                    <div class="product-gallery border mb-3 p-5 bg-thumb " :style="{ height : '20em',backgroundImage : `url(${quickPreviewImage})`}" data-slider-id="1"></div>
+                                    <!--  -->
+                                    <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1">
+                                        <div class="owl-thumb-item ms-0 me-1  card rounded cursor-pointer bg-thumb" v-for="media in quickPreviewMedia" :key="media.id" @click="quickPreviewImage = media.path"  :style="{ backgroundImage : `url(${media.path})` , height : '40px' , width : '40px'}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-7 ps-4">
+                                <div class="product-info-section pb-3 px-3 d-flex flex-column h-100">
+                                    <h6 class="mt-3 mt-lg-0 mb-0 fw-bold">{{ quickPreviewProduct.name }}</h6>
+                                    <div class="product-rating d-flex align-items-center mt-2">
+                                        <div class="rates cursor-pointer font-13">	<i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                        </div>
+                                        <div class="ms-1">
+                                            <p class="mb-0">(24 Ratings)</p>
+                                        </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="d-flex align-items-center mt-3 gap-2">
+                                        <template v-if="quickPreviewAttribute.discounted_mrp > 0">
+                                            <div class="h4 fw-bold">{{ currency(quickPreviewAttribute.discounted_mrp) }}</div>
+                                            <div class="h5 fw-light text-muted text-decoration-line-through"> {{ currency(quickPreviewAttribute.mrp)  }}</div>
+                                            <div class="h6 fw-bold text-danger">({{ discountedPricePercentage(quickPreviewAttribute.discounted_mrp,quickPreviewAttribute.mrp) }}% off)</div>
+                                        </template>
+                                        <template v-else>
+                                            <div class="h4 fw-bold">{{ currency(quickPreviewAttribute.mrp) }}</div>
+                                        </template>  
+                                    </div>
+                                              
+                                    <div class="row row-cols-auto align-items-center mt-3">
+                                        <div class="col-12 mb-2" :style="{ maxHeight: '8.56em' , overflow : 'auto'}">
+                                            <template v-for="(attribute,index) in quickPreviewProduct.attributes" :key="attribute.id">
+                                                <template v-if="attribute.attribute_type.includes('Color')">
+                                                    <label class="form-label d-block" v-if="index == 0">Colors</label>                                                    
+                                                    <div class="color-indigator-item d-inline-flex me-1" :data-id="attribute.id" :data-data="attribute.attribute_data.color" :style="{ background : attribute.attribute_data.color }" @click="quickPreviewMedia = attribute.media; quickPreviewAttribute = attribute;"></div>                                                    
+                                                </template>
+                                            </template>
+                                        </div>
+
+                                        <div class="col">
+                                            <label class="form-label">Quantity</label>
+                                            <select class="form-select form-select-sm">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">                                            
+                                            <template v-if="quickPreviewAttribute.attribute_type.includes('Size') && quickPreviewAttribute.attribute_type.includes('Color')">                                                
+                                                <label class="form-label">Size</label>
+                                                <div class="p-1 px-2 cursor-pointer">{{ quickPreviewAttribute.attribute_data.size}}</div>
+                                            </template>
+                                            <div class="size-chart" style="max-height: 10em; overflow: auto;" v-else>                                                
+                                                <template v-for="(attribute,index) in quickPreviewProduct.attributes" :key="attribute.id">
+                                                    <template v-if="attribute.attribute_type.includes('Size') && !attribute.attribute_type.includes('Color')">                                                        
+                                                        <label class="form-label d-block" v-if="index == 0">Size</label>
+                                                        <div class="d-inline-flex me-1 mb-1" :data-id="attribute.id" :data-data="attribute.attribute_data.size"  @click="quickPreviewMedia = attribute.media; quickPreviewAttribute = attribute;" >
+                                                            <div class="btn btn-sm rounded border " :class="{ 'btn-warning' : (attribute.id == quickPreviewAttribute.id) }">{{ attribute.attribute_data.size}}</div>
+                                                        </div>
+                                                    </template>                           
+                                                </template>                     
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                    <!--end row-->
+                                    <div class="d-flex gap-2 pt-2 mt-auto">
+                                        <a href="javascript:;" class="btn btn-dark btn-ecomm">	<i class="bx bxs-cart-add"></i>Add to Cart</a>	<a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end row-->
+
+                        <div class="row g-0 border-top mt-4">
+                            <div class="col-12 col-lg-3 bg-light">
+                                <div class="nav flex-column nav-pills">
+                                    <button class="nav-link rounded-0 active" data-bs-toggle="pill" data-bs-target="#detail" type="button"> Product Description </button>
+                                    <button class="nav-link rounded-0" data-bs-toggle="pill" data-bs-target="#howToUse" type="button"> How To Use </button>
+                                    <button class="nav-link  rounded-0" data-bs-toggle="pill" data-bs-target="#ingredients" type="button"> Ingredients </button>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-9">
+                                <div class="tab-content p-3" :style="{ maxHeight: '14em' , overflow : 'auto' , textAlign : 'justify'}">
+                                    <div class="tab-pane fade show active" id="detail">
+                                        <div v-html="quickPreviewProduct.product_description"></div>
+                                    </div>
+                                    <div class="tab-pane fade " id="howToUse">
+                                        <div v-html="quickPreviewProduct.how_to_use"></div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ingredients">
+                                        <div v-html="quickPreviewProduct.ingredients"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </WebLayout>	
+</template>
+
+<script>
+    import WebLayout from '@/Layouts/WebLayout.vue';    
+    import Carousel from './components/Carousel.vue';
+    import CategoryCarousel from './components/CategoryCarousel.vue';
+    import MainCarousel from './components/MainCarousel.vue';
+    import TopCategories from './components/TopCategories.vue';
+    import QuickPreview from './components/QuickPreview.vue';
+    import TopBrands from './components/TopBrands.vue';
+    // 
+    import { Head } from '@inertiajs/vue3';
+    import { showProductPrice , slickCarouselConfig , currency , discountedPricePercentage } from "@/utils";
+    import isEmpty from 'lodash/isEmpty';
+    import head from 'lodash/head'
+
+    import "@fancyapps/ui/dist/carousel/carousel.autoplay.css";
+    import '@fancyapps/ui/dist/carousel/carousel.css';
+    // 
+    export default {
+        data: (prop) => ({ 
+                            isEmpty , head ,
+                            currency, discountedPricePercentage,
+                            showProductPrice, 
+                            quickPreviewProduct : null,
+                            quickPreviewAttribute : null,
+                            quickPreviewMedia : [],
+                            quickPreviewImage : null
+                        }),
+        props: ["FeaturedProducts","TopCategories","BestOffer","BestSelling","banners","shopByBrands","browseCategories"],
+        components : { WebLayout , Head , Carousel , CategoryCarousel, MainCarousel, TopCategories , QuickPreview , TopBrands},
+        methods:{
+                    quickPreview(product){
+                        this.quickPreviewProduct = product
+                        if(isEmpty(product.attributes)){
+                            this.quickPreviewMedia = []
+                        }else{                            
+                            this.quickPreviewAttribute = head(product.attributes)
+                            this.quickPreviewMedia =  this.quickPreviewAttribute.media
+                        }
+                    }
+        },
+        watch: {
+            quickPreviewMedia: {
+                deep: true,
+                handler: function () {	  
+                    this.quickPreviewImage = (this.quickPreviewMedia.length > 0) ? head(this.quickPreviewMedia).path : null 
+                },
+            },
+        },
+        mounted () {
+            //$('.product-thumbs,.browse-category,.brands-shops').slick(slickCarouselConfig); 
+        }
+    }
+</script>
+
