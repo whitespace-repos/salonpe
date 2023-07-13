@@ -130,7 +130,8 @@
         
 
         <!-- Browse categories -->
-        <CategoryCarousel :categories="browseCategories.categories"/>
+        <CategoryCarousel :categories="browseCategories.categories" :id="'browseCategory'"/>
+
         
         <!--start support info-->
         <section class="py-5 bg-light">

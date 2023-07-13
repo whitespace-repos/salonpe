@@ -100,7 +100,8 @@ class Categories extends Controller
                 $extension = $file->extension();
                 $originalName = time().'_'.$file->getClientOriginalName();
                 $filename = Str::slug(pathinfo($originalName, PATHINFO_FILENAME), "-");
-                $path = "categories/".$category->id."/thumb/".$filename.".".$extension;
+                $path = "categories/".$category->id."/thumb/".$filename.".".$extension;            
+                Storage::makeDirectory("public/categories/".$category->id."/thumb/");            
                 //                 
                 \Tinify\setKey("PdG6xp3wD4tQX5gnK5xdlpLmdWynn8QS");
                 $source = \Tinify\fromFile($file);
