@@ -7,7 +7,7 @@
 			<div class="top-menu">
 				<div class="container">
 					<nav class="navbar navbar-expand">
-						<div class="shiping-title d-none d-sm-flex">Welcome to our Shopingo store!</div>
+						<div class="shiping-title d-none d-sm-flex">Welcome to Variety Cosmetics, Pune</div>
 						<ul class="navbar-nav ms-auto d-none d-lg-flex">
 							<li class="nav-item"><a class="nav-link" href="order-tracking.html">Track Order</a>
 							</li>
@@ -28,13 +28,16 @@
 							</li>
 							<li class="nav-item"> <a class="nav-link" :href="$page.props.website.data.instagram"><i class='bx bxl-instagram'></i></a>
 							</li>
+							<li class="nav-item"> <inertia-link class="nav-link" :href="route('salonpe.contactus')"><i class='bi bi-telephone'></i></inertia-link>
+							</li>
+
 							<li class="nav-item"> <a class="nav-link" :href="$page.props.website.data.mail"><i class='bi bi-envelope'></i></a>
 							</li>
 						</ul>
 					</nav>
 				</div>
 			</div>
-			<div class="header-content" style="background-color: #fecd07;">
+			<div class="header-content" style="background-color: rgb(0 0 0);">
 				<div class="container">
 					<div class="row align-items-center gx-4">
 						<div class="col-auto">
@@ -45,7 +48,7 @@
 								</div>
 								<div class="logo">
 									<inertia-link :href="route('salonpe.index')">
-										<img src="@/assets/images/org/logo.jpeg" class="logo-icon" alt="" style="width: 170px !important;"/>
+										<img src="@/assets/images/org/logo.jpeg" class="logo-icon" alt="" style="width: 10em !important;"/>
 									</inertia-link>
 								</div>
 							</div>
@@ -58,10 +61,10 @@
 						</div>
 						<div class="col-auto d-none d-xl-flex">
 							<div class="d-flex align-items-center gap-3">
-								<div class="fs-1 text-content"><i class='bx bx-headphone'></i></div>
+								<div class="fs-1"><i class='bx bx-headphone'></i></div>
 								<div class="">
-									<p class="mb-0 text-content">CALL US NOW</p>
-									<h5 class="mb-0">{{ $page.props.website.data.contact }}</h5>
+									<p class="mb-0">CALL US NOW</p>
+									<h6 class="mb-0 text-white">{{ $page.props.website.data.contact }}</h6>
 								</div>
 							</div>
 						</div>
@@ -69,12 +72,12 @@
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav">
-										<li class="nav-item"><a href="account-dashboard.html" class="nav-link cart-link"><i class='bx bx-user'></i></a>
+										<li class="nav-item"><a href="account-dashboard.html" class="nav-link cart-link text-muted"><i class='bx bx-user'></i></a>
 										</li>
-										<li class="nav-item"><a href="wishlist.html" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
+										<li class="nav-item"><a href="wishlist.html" class="nav-link cart-link  text-muted position-relative"><span class="alert-count shadow-lg">0</span><i class='bx bx-heart'></i> </a>
 										</li>
 										<li class="nav-item dropdown dropdown-large">
-											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown">	<span class="alert-count">8</span>
+											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link text-muted" data-bs-toggle="dropdown">	<span class="alert-count shadow-lg">8</span>
 												<i class='bx bx-shopping-bag'></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-end">
@@ -84,7 +87,7 @@
 														<p class="cart-header-clear ms-auto mb-0">VIEW CART</p>
 													</div>
 												</a>
-												<div class="cart-list">
+												<div class="cart-list  overflow-auto">
 													<a class="dropdown-item" href="javascript:;">
 														<div class="d-flex align-items-center">
 															<div class="flex-grow-1">
@@ -225,7 +228,7 @@
 				</div>
 			</div>
 			<div class="primary-menu d-flex container mx-auto align-items-center">
-				<nav class="navbar navbar-expand-xl w-100 navbar-dark container mb-0 p-0 d-none d-md-block">
+				<nav class="navbar navbar-expand-xl w-100 navbar-dark container mb-0 p-0">
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
 					  <div class="offcanvas-header">
 						<div class="offcanvas-logo"><img src="@/assets/images/org/logo.jpeg" width="100" alt="">
@@ -300,7 +303,7 @@
 						  </li>
 						  <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-								Shop <i class='bx bx-chevron-down ms-1'></i> 
+								Account <i class='bx bx-chevron-down ms-1'></i> 
 							</a>
 							<ul class="dropdown-menu">
 								<li class="nav-item dropdown"><a class="dropdown-item dropdown-toggle dropdown-toggle-nocaret" href="#">Shop Layouts <i class='bx bx-chevron-right float-end'></i></a>
@@ -341,45 +344,6 @@
 								</li>
 							</ul>
 						  </li>
-
-						  <li class="nav-item">
-							<a class="nav-link" href="about-us.html">About</a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link" href="contact-us.html">Contact</a>
-						  </li>
-						  <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Store</a> 
-						  </li>
-						  <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-							  Account
-							</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a>
-								</li>
-								<li><a class="dropdown-item" href="account-downloads.html">Downloads</a>
-								</li>
-								<li><a class="dropdown-item" href="account-orders.html">My Orders</a>
-								</li>
-								<li><a class="dropdown-item" href="account-user-details.html">User Details</a>
-								</li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="authentication-login.html">Login</a></li>
-								<li><a class="dropdown-item" href="authentication-register.html">Register</a></li>
-								<li><a class="dropdown-item" href="authentication-reset-password.html">Password</a></li>
-							</ul>
-						  </li>
-						  <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-							  Blog
-							</a>
-							<ul class="dropdown-menu">
-							  <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-							  <li><a class="dropdown-item" href="blog-read.html">Blog Read</a></li>
-							</ul>
-						  </li>
 						</ul>
 					  </div>					  
 					</div>						
@@ -402,19 +366,19 @@
 		<!--end page wrapper -->
 		<!--start footer section-->
 		<footer>
-			<section class="py-5 border-top bg-light">
+			<section class="py-5 border-top bg-black">
 				<div class="container">
 					<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
 						<div class="col">
-							<div class="footer-section1">
+							<div class="footer-section1 mb-4">
 								<img src="@/assets/images/org/logo.jpeg" class="logo-img mb-3" alt="" width="170">
-            					<div v-html="$page.props.website.data.footerText "></div>
-             					<inertia-link class="link-dark" :href="route('salonpe.aboutus')">Read More</inertia-link>
+            					<div v-html="$page.props.website.data.footerText"></div>
+             					<inertia-link class="link-dark text-white mb-3" :href="route('salonpe.aboutus')">Read More</inertia-link>
 							</div>
 						</div>
-						<div class="col mx-auto">
+						<div class="col ps-0 ps-md-4">
 							<div class="footer-section2">
-								<h5 class="mb-4 text-uppercase fw-bold">Categories</h5>
+								<h6 class="mb-4 text-uppercase fw-bold text-white">Categories</h6>
 								<ul class="list-unstyled">
 									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Jeans</a>
 									</li>
@@ -439,9 +403,38 @@
 								</ul>
 							</div>
 						</div>
+
+						<div class="col">
+							<div class="footer-section2">
+								<h6 class="mb-4 text-uppercase fw-bold text-white">Brands</h6>
+								<ul class="list-unstyled">
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Jeans</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> T-Shirts</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sports</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Shirts & Tops</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Clogs & Mules</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sunglasses</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Bags & Wallets</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sneakers & Athletic</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Electronis</a>
+									</li>
+									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Furniture</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
 						<div class="col">
 							<div class="footer-section4">
-								<h5 class="mb-3 fw-bold">Follow Us</h5>
+								<h6 class="mb-3 fw-bold text-white">Follow Us</h6>
 								<div class="social-link d-flex align-items-center gap-2">
 									<a :href="$page.props.website.data.facebook"><i class="bi bi-facebook"></i></a>
 									<a :href="$page.props.website.data.mail"><i class="bi bi-envelope"></i></a>
@@ -449,11 +442,11 @@
 									<a :href="$page.props.website.data.instagram"><i class="bi bi-instagram"></i></a>
 								</div>
 								<div class="mb-3 mt-3">
-									<h5 class="fw-bold">Support</h5>
+									<h6 class="fw-bold text-white">Support</h6>
 									<p class="mb-0 text-muted">{{ $page.props.website.data.support }}</p>
 								</div>
 								<div class="">
-									<h5 class="fw-bold">Phone Number</h5>
+									<h6 class="fw-bold text-white">Phone Number</h6>
 									<p class="mb-0 text-muted">{{ $page.props.website.data.contact }}</p>
 								</div>
 							</div>
@@ -466,7 +459,7 @@
 			<section class="footer-strip text-center py-3 border-top positon-absolute bottom-0">
 				<div class="container">
 					<div class="d-flex flex-column flex-lg-row align-items-center gap-3 justify-content-center">
-						<p class="mb-0">Copyright © 2022. All right reserved.</p>
+						<p class="mb-0">Copyright © 1963 Variety Cosmetics Pvt Ltd. All rights reserved</p>
 					</div>
 				</div>
 			</section>
@@ -484,9 +477,6 @@
     import "@/assets/web/js/bootstrap.bundle.min.js";
     // import "@/assets/web/plugins/OwlCarousel/js/owl.carousel.min.js"
     // import "@/assets/web/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js"
-    import "../../css/web.css";    
-    // 
-    export default {
-       
-    }
+    import "@/assets/web/css/web.css";    
+    //
 </script>

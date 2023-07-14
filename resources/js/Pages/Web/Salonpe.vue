@@ -4,60 +4,9 @@
         <!-- Main Crousel -->
         <MainCarousel  :banners="banners"/>
 
-        <!--start pramotion-->
-        <section class="py-5">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4">
-                    <div class="col">
-                        <div class="card rounded-0 shadow-none bg-info bg-opacity-25">
-                            <div class="row g-0 align-items-center">
-                                <div class="col">
-                                    <img src="@/assets/web/images/promo/01.png" class="img-fluid" alt="" />
-                                </div>
-                                <div class="col">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-uppercase fw-bold">Men Wear</h5>
-                                        <p class="card-text text-uppercase">Starting at $9</p>
-                                        <a href="javascript:;" class="btn btn-outline-dark btn-ecomm">SHOP NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card rounded-0 shadow-none bg-danger bg-opacity-25">
-                            <div class="row g-0 align-items-center">
-                                <div class="col">
-                                    <img src="@/assets/web/images/promo/02.png" class="img-fluid" alt="" />
-                                </div>
-                                <div class="col">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-uppercase fw-bold">Women Wear</h5>
-                                        <p class="card-text text-uppercase">Starting at $9</p>	<a href="javascript:;" class="btn btn-outline-dark btn-ecomm">SHOP NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card rounded-0 shadow-none bg-warning bg-opacity-25">
-                            <div class="row g-0 align-items-center">
-                                <div class="col">
-                                    <img src="@/assets/web/images/promo/03.png" class="img-fluid" alt="" />
-                                </div>
-                                <div class="col">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-uppercase fw-bold">Kids Wear</h5>
-                                        <p class="card-text text-uppercase">Starting at $9</p><a href="javascript:;" class="btn btn-outline-dark btn-ecomm">SHOP NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end row-->
-            </div>
-        </section>
+        <!--Top brands-->        
+        <TopBrands  :heading="'Top Brands'" :id="'topBrands'" :brands="shopByBrands.brands"/>
+        <!--end brands-->
         
         <!-- Featured Products -->
         <Carousel :products="FeaturedProducts.products" :heading="'FEATURED PRODUCTS'" @selected-product="quickPreview" :id="'featuredProducts'" :timeout="3000"/>
@@ -157,7 +106,7 @@
                     </div>
                     <div class="col">
                         <div class="text-center border p-3 bg-white">
-                            <div class="font-50 text-dark">	<i class='bx bx-dollar-circle'></i>
+                            <div class="font-50 text-dark">	<i class='bx bx-rupee'></i>
                             </div>
                             <h5 class="fs-5 text-uppercase mb-0 fw-bold">Free returns</h5>
                             <p class="text-capitalize">We return money within 30 days</p>
@@ -179,9 +128,7 @@
         </section>
         
 
-        <!--Top brands-->        
-        <TopBrands  :heading="'Top Brands'" :id="'topBrands'" :brands="shopByBrands.brands"/>
-        <!--end brands-->
+        
 
         <div class="modal fade" id="QuickViewProduct" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-xl-down">            
@@ -191,7 +138,7 @@
                         <div class="row g-0">
                             <div class="col-12 col-lg-5">
                                 <div class="image-zoom-section">
-                                    <div class="product-gallery border mb-3 p-5 bg-thumb " :style="{ height : '20em',backgroundImage : `url(${quickPreviewImage})`}" data-slider-id="1"></div>
+                                    <div class="product-gallery border mb-3 p-5 bg-thumb border-0" :style="{ height : '20em',backgroundImage : `url(${quickPreviewImage})`}" data-slider-id="1"></div>
                                     <!--  -->
                                     <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1">
                                         <div class="owl-thumb-item ms-0 me-1  card rounded cursor-pointer bg-thumb" v-for="media in quickPreviewMedia" :key="media.id" @click="quickPreviewImage = media.path"  :style="{ backgroundImage : `url(${media.path})` , height : '40px' , width : '40px'}"></div>
@@ -201,7 +148,7 @@
                             <div class="col-12 col-lg-7 ps-4">
                                 <div class="product-info-section pb-3 px-3 d-flex flex-column h-100">
                                     <h6 class="mt-3 mt-lg-0 mb-0 fw-bold">{{ quickPreviewProduct.name }}</h6>
-                                    <div class="product-rating d-flex align-items-center mt-2">
+                                    <div class="product-rating d-flex align-items-center mt-2 d-none">
                                         <div class="rates cursor-pointer font-13">	<i class="bx bxs-star text-warning"></i>
                                             <i class="bx bxs-star text-warning"></i>
                                             <i class="bx bxs-star text-warning"></i>
@@ -265,7 +212,8 @@
                                     </div>
                                     <!--end row-->
                                     <div class="d-flex gap-2 pt-2 mt-auto">
-                                        <a href="javascript:;" class="btn btn-dark btn-ecomm">	<i class="bx bxs-cart-add"></i>Add to Cart</a>	<a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
+                                        <a href="javascript:;" class="btn btn-dark btn-ecomm bg-yellow px-4 text-black">	<i class="bx bxs-cart-add"></i>Cart</a>
+                                        <a href="javascript:;" class="btn btn-light btn-ecomm px-4"><i class="bx bx-heart"></i>Wishlist</a>
                                     </div>
                                 </div>
                             </div>

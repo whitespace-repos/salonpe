@@ -42,6 +42,8 @@ import LeftSidebarNav from "./LeftSidebarNav.vue"
 import DemoConfig from "./DemoConfig.vue"
 import PageHeader from "./PageHeader.vue"
 import NotificationModal from "./NotificationModal.vue"
+import 'bootstrap'
+
 export default {
 	components:{
 		Footer,

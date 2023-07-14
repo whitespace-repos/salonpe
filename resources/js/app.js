@@ -9,7 +9,7 @@ import VueApexCharts from "vue3-apexcharts";
 import { QuillEditor } from '@vueup/vue-quill'
 import { vMaska } from "maska"
 
-import "bootstrap"
+//import "bootstrap"
 // 
 import  '@/assets/js/vendor/uploader/image-uploader.min.js';
 

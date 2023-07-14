@@ -50,10 +50,7 @@
                                             <i class="bx bxs-star text-warning"></i>
                                             <i class="bx bxs-star text-warning"></i>
                                         </div>
-                                        <div class="product-price d-flex align-items-center justify-content-start gap-2 mt-2">
-                                            <div class="h6 fw-light fw-bold text-secondary text-decoration-line-through">$59.00</div>
-                                            <div class="h6 fw-bold">{{ showProductPrice(product )}}</div>
-                                        </div>
+                                        <div class="product-price d-flex align-items-center justify-content-start gap-2 mt-2" v-html="displayPriceHtml(product)"></div>
                                     </div>
                                 </div>
                             </div>
@@ -65,11 +62,17 @@
     </section>
 </template>
 
+<style>
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        background-color: #fecd07 !important;
+        color: black !important;
+    }
+</style>
 <script>
-    import { showProductPrice } from '@/utils';
+    import { showProductPrice , displayPriceHtml } from '@/utils';
     import isEmpty from 'lodash/isEmpty'
     export default {
-        data: (prop) => ({ isEmpty , showProductPrice }),
+        data: (prop) => ({ isEmpty , showProductPrice , displayPriceHtml }),
         props : ["categories"],
         emits: ['selectedProduct'],  
     }

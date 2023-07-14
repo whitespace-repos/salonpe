@@ -14,23 +14,19 @@
                                 <div class="bg-thumb p-5" :style="{ backgroundImage : `url(${category.image})`}"></div>
                                 <div class="list-group list-group-flush border-0">
                                     <a href="javascript:;" class="list-group-item bg-transparent text-center">
-                                        <span class="mb-0 text-uppercase text-center">{{ category.name }}</span>
+                                        <div class="mb-0 text-uppercase text-center text-truncate">{{ category.name }}</div>
                                     </a>	
                                     <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0">
                                         Blazers & Suits
-                                        <span class="badge bg-dark rounded-pill">14</span>
                                     </a>
                                     <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0 ">
                                         Dresses
-                                        <span class="badge bg-dark rounded-pill">2</span>
                                     </a>
                                     <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0">
                                         Sportswear
-                                        <span class="badge bg-dark rounded-pill">1</span>
                                     </a>
                                     <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0">
                                         Hoodie & Sweatshirts
-                                        <span class="badge bg-dark rounded-pill">1</span>
                                     </a>
                                 </div>
                             </div>

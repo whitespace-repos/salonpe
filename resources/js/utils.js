@@ -22,6 +22,25 @@ function showProductPrice(product){
         }
 }
 
+function displayPrice(amount){
+    return "₹"+Number(amount).toFixed(2)
+}
+
+
+function displayPriceHtml(product){        
+        if(!isEmpty(product.attributes)){
+            let attribute = head(product.attributes);
+            if(attribute.discounted_mrp == 0){
+                 return `<div class="fs-6  mb-0 fw-bold">${displayPrice(attribute.mrp)}</div>`;            
+            }else{
+               return `<div class="mb-0 fw-light fw-bold text-secondary text-decoration-line-through">${displayPrice(attribute.discounted_mrp)}</div> ` +
+                `<div class="mb-0 fw-bold">${displayPrice(attribute.mrp)}</div> <div class="small fw-bold text-danger">(${discountedPricePercentage(attribute.discounted_mrp,attribute.mrp)}% off)</div>`;            
+            }            
+        }else{
+            return 'N/A';
+        }        
+}
+
 let slickCarouselConfig = {
                                 dots: false,
                                 arrows: true,
@@ -66,4 +85,4 @@ let slickCarouselConfig = {
         }                            
 
 
-export { currency , scale , showProductPrice , slickCarouselConfig , discountedPricePercentage}
+export { currency , scale , showProductPrice , slickCarouselConfig , discountedPricePercentage, displayPriceHtml}

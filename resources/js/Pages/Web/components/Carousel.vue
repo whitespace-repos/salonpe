@@ -24,10 +24,7 @@
                                 <div class="card-body d-flex  flex-column">
                                     <small>{{ isEmpty(product.category) ? '' : product.category.name }}</small>
                                     <p class="mb-0 text-black" v-snip="{ lines: 2 }">{{ product.name }}</p>
-                                    <div class="product-price d-flex align-items-center justify-content-start gap-2 mt-auto">
-                                        <div class="h6 fw-light fw-bold text-secondary text-decoration-line-through">$59.00</div>
-                                        <div class="h6 fw-bold">{{ showProductPrice(product) }}</div>
-                                    </div>
+                                    <div class="product-price d-flex align-items-center justify-content-start gap-2 mt-auto" v-html="displayPriceHtml(product)"></div>
                                 </div>
                             </div>            
                         </div>
@@ -41,13 +38,13 @@
 
 </template>
 <script>
-    import { showProductPrice } from "@/utils.js";
+    import { showProductPrice , displayPriceHtml} from "@/utils.js";
     import isEmpty from "lodash/isEmpty"
     import { Carousel } from '@fancyapps/ui/dist/carousel/carousel.esm.js';    
     import { Autoplay } from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
     
     export default {
-        data:(prop) =>({ showProductPrice , isEmpty }),
+        data:(prop) =>({ showProductPrice , isEmpty , displayPriceHtml}),
         props:["products" , "heading" , "id" ,'timeout'],
         emits: ['selectedProduct'],        
         mounted () {

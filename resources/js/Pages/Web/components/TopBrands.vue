@@ -1,5 +1,5 @@
 <template>
-    <section class="py-4">
+    <section class="pt-4 pb-5">
         <div class="container-fluid">
             <h3 class="my-4 text-center">{{ heading }}</h3>
             <div class="brand-grid f-carousel" :id="id">
