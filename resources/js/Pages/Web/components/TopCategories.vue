@@ -50,7 +50,7 @@
                                             <i class="bx bxs-star text-warning"></i>
                                             <i class="bx bxs-star text-warning"></i>
                                         </div>
-                                        <div class="product-price d-flex align-items-center justify-content-start gap-2 mt-2" v-html="displayPriceHtml(product)"></div>
+                                        <div class="product-price d-flex align-items-center justify-content-start gap-0 gap-md-1 flex-wrap flex-md-nowrap mt-2" v-html="displayPriceHtml(product)"></div>
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Setting;
+use Brand;
+use Category;
 
 class Settings extends Controller
 {
@@ -77,7 +79,13 @@ class Settings extends Controller
         }elseif($type == 'contact'){
             return Inertia::render('Settings/Contact' , [ "contact" => Setting::where('name','Contact')->first()]);
         }elseif($type == 'website'){
-            return Inertia::render('Settings/Website' , [ "website" => Setting::where('name','Website')->first()]);
+            $brands = Brand::select("id","name")->whereHas("products")->get(); 
+            $categories = Category::whereNull("parent_id")->get();
+            return Inertia::render('Settings/Website' , [ 
+                                        "website" => Setting::where('name','Website')->first(),
+                                        "brands" => $brands,
+                                        "categories" => $categories
+                                    ]);
         }elseif($type == 'aboutus'){
             return Inertia::render('Settings/AboutUs' , [ "aboutus" => Setting::where('name','AboutUs')->first()]);
         }

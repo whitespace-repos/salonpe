@@ -11,7 +11,7 @@
                 <div :id="id" class="my-4 py-10 f-carousel bg-gray-50">
                     <div class="f-carousel__viewport px-12">
                         <div class="f-carousel__slide shadow-sm  border-f-carousel-light p-0" v-for="product in products" :key="product.id">
-                            <div class="card h-auto" style="height:24em  !important">
+                            <div class="card h-auto rounded-0 shadow-none" style="height:24em  !important">
                                 <div class="position-relative overflow-hidden">
                                     <div class="add-cart position-absolute top-0 end-0 mt-3 me-3">
                                         <a href="javascript:;"><i class='bx bx-cart-add' ></i></a>
@@ -21,10 +21,10 @@
                                     </div>
                                     <div class="product-image bg-thumb" :style="{ backgroundImage : `url(${product.thumb_image})`}" ></div>
                                 </div>
-                                <div class="card-body d-flex  flex-column">
+                                <div class="card-body d-flex  flex-column py-2">
                                     <small>{{ isEmpty(product.category) ? '' : product.category.name }}</small>
                                     <p class="mb-0 text-black" v-snip="{ lines: 2 }">{{ product.name }}</p>
-                                    <div class="product-price d-flex align-items-center justify-content-start gap-2 mt-auto" v-html="displayPriceHtml(product)"></div>
+                                    <div class="product-price d-flex align-items-center justify-content-start mt-auto gap-0 gap-md-1 flex-wrap flex-md-nowrap" v-html="displayPriceHtml(product)"></div>
                                 </div>
                             </div>            
                         </div>

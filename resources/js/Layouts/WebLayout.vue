@@ -44,19 +44,19 @@
 							<div class="d-flex align-items-center gap-3">
 								<div class="mobile-toggle-menu d-inline d-xl-none" data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasNavbar">
-									<i class="bx bx-menu"></i>
+									<i class="bx bx-menu text-yellow"></i>
 								</div>
 								<div class="logo">
 									<inertia-link :href="route('salonpe.index')">
-										<img src="@/assets/images/org/logo.jpeg" class="logo-icon" alt="" style="width: 10em !important;"/>
+										<img src="@/assets/images/org/logo.jpeg" class="logo-icon" alt="" style="width: 9em !important;"/>
 									</inertia-link>
 								</div>
 							</div>
 						</div>
 						<div class="col-12 col-xl order-4 order-xl-0">
-							<div class="input-group flex-nowrap pb-3 pb-xl-0">
+							<div class="input-group input-group-md flex-nowrap pb-3 pb-xl-0">
 								<input type="text" class="form-control w-100 border-dark border border-3" placeholder="Search for Products">
-								<button class="btn btn-dark btn-ecomm border-3" type="button">Search</button>
+								<button class="btn btn-dark  bg-yellow text-black text-semibold" type="button">Search</button>
 							</div>
 						</div>
 						<div class="col-auto d-none d-xl-flex">
@@ -301,6 +301,15 @@
 							  <!-- end row -->
 							</div>
 						  </li>
+						  <li class="nav-item d-block d-md-none">
+								<inertia-link class="nav-link" :href="route('salonpe.aboutus')">About</inertia-link>
+							</li>
+							<li class="nav-item d-block d-md-none">
+								<inertia-link class="nav-link" :href="route('salonpe.store')">Our Stores</inertia-link>
+							</li>
+							<li class="nav-item d-block d-md-none">
+								<inertia-link class="nav-link" :href="route('salonpe.contactus')">Contact</inertia-link>
+							</li>
 						  <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
 								Account <i class='bx bx-chevron-down ms-1'></i> 
@@ -348,7 +357,7 @@
 					  </div>					  
 					</div>						
 				  </nav>
-				  <img src="@/assets/web/images/salonpe.gif" class="w-25 py-3 py-md-0" style="height: 45px;"/>
+				  <img src="@/assets/web/images/salonpe.gif" class="logo-icon-gif  py-3 py-md-0"/>
 			</div>
 		</div>
 		<!--end top header wrapper-->
@@ -376,29 +385,12 @@
              					<inertia-link class="link-dark text-white mb-3" :href="route('salonpe.aboutus')">Read More</inertia-link>
 							</div>
 						</div>
-						<div class="col ps-0 ps-md-4">
+						<div class="col ps-2 ps-md-4">
 							<div class="footer-section2">
-								<h6 class="mb-4 text-uppercase fw-bold text-white">Categories</h6>
+								<h6 class="ps-1 mb-4 text-uppercase fw-bold text-white">Categories</h6>
 								<ul class="list-unstyled">
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Jeans</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> T-Shirts</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sports</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Shirts & Tops</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Clogs & Mules</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sunglasses</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Bags & Wallets</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sneakers & Athletic</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Electronis</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Furniture</a>
+									<li class="mb-1" v-for="category in $page.props.website.data.categories" :key="category.id">
+										<a href="javascript:;"><i class='bx bx-chevron-right'></i> {{  category.name }}</a>
 									</li>
 								</ul>
 							</div>
@@ -408,25 +400,8 @@
 							<div class="footer-section2">
 								<h6 class="mb-4 text-uppercase fw-bold text-white">Brands</h6>
 								<ul class="list-unstyled">
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Jeans</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> T-Shirts</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sports</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Shirts & Tops</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Clogs & Mules</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sunglasses</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Bags & Wallets</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sneakers & Athletic</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Electronis</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Furniture</a>
+									<li class="mb-1" v-for="brand in $page.props.website.data.brands" :key="brand.id">
+										<a href="javascript:;"><i class='bx bx-chevron-right'></i> {{ brand.name }}</a>
 									</li>
 								</ul>
 							</div>
@@ -472,6 +447,7 @@
 	<!--end wrapper-->
 
 </template>
+
 
 <script>
     import "@/assets/web/js/bootstrap.bundle.min.js";

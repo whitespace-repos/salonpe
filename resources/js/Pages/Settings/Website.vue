@@ -44,6 +44,22 @@
                             </div>  
                         </div>
 
+                        <div class="col-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Categories</label>
+                                <multiselect placeholder="Categories ..." v-model="form.website.categories" label="name" track-by="name" :options="categories" :multiple="true" ></multiselect>
+                            </div>  
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group mb-3">
+                                <label class="form-label">Brands</label>
+                                <multiselect placeholder="Brand ..." v-model="form.website.brands" label="name" track-by="name" :options="brands" :multiple="true" ></multiselect>
+                            </div>  
+                        </div>
+
+
+
                         <div class="col-12">
                             <div class="form-group mb-3">
                                 <label class="form-label">Footer Text</label>                              
@@ -72,8 +88,9 @@
 
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import Multiselect from 'vue-multiselect'
 export default {
-    props:["website"],
+    props:["website", "brands", "categories"],
 	data() {
 		return {
                  form : {
@@ -85,7 +102,10 @@ export default {
                                                             blogText : this.website.data.blogText,
                                                             support : this.website.data.support,
                                                             contact : this.website.data.contact,
-                            })
+                                                            categories : this.website.data.categories,
+                                                            brands : this.website.data.brands,
+
+                            }),
                  }     
 		}
 	},
@@ -95,7 +115,7 @@ export default {
                 }
     },
     components:{
-        AuthenticatedLayout
+        AuthenticatedLayout, Multiselect
     }
 }
 </script>

@@ -67,3 +67,13 @@
     background: #fecd07;
     border-color: #fecd07;
 }
+.text-yellow {
+    color : #fecd07;
+}
+
+.f-carousel__dot {
+    --f-carousel-dot-color: #fecd07;
+}
+
+.logo-icon-gif {  width:  21% !important; }
+@media (max-width: 576px) { .logo-icon-gif {  width:  70% !important } }
