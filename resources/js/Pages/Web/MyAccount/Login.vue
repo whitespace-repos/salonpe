@@ -27,8 +27,8 @@
                     <div class="row row-cols-1 row-cols-xl-2">
                         <div class="col mx-auto">
                             <div class="card shadow-none">
-                                <div class="card-body">
-                                    <div class="rounded px-5">
+                                <div class="card-body px-0 px-md-2">
+                                    <div class="rounded px-0 px-md-5">
                                         <div class="form-body">
                                             <div class="text-center mb-3">
                                                 <h5 class="mb-0">Login to your account</h5>

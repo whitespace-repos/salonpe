@@ -91,6 +91,8 @@ Route::post('product-attribute-store/{productId}',[Products::class,'storeProduct
 
 Route::get('/dashboard', [Dashboard::class, 'dashboard'])->middleware("auth")->name('dashboard');
 Route::get('/wishlist/add',[Catalog::class, 'addToWishlist'])->name("add.to.wishlist");
+Route::get('/wishlists',[Catalog::class, 'wishlists'])->name("wishlists");
+Route::get('/toggle/wishlist',[Catalog::class,'toggleWishlist'])->name('toggle.wishlist');
 // 
 Route::get("/website-landing", [ Websites::class , 'landing'])->name("website.page.landing");
 Route::post("/store-featured-offer-selling-product",[ Websites::class, 'storeFeaturedOfferSellingProduct'])->name("storeFeaturedOfferSellingProduct");

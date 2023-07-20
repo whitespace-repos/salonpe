@@ -25,7 +25,7 @@
         <section class="py-4">
             <div class="container">
                 <div class="product-categories">
-                    <div class="row row-cols-1 row-cols-lg-4 g-5">
+                    <div class="row row-cols-1 row-cols-lg-4 g-3">
                         <div class="col" v-for="category in browseCategories.categories" :key="category.id">
                             <div class="card">
                                 <div class="bg-thumb p-5" :style="{ backgroundImage : `url(${category.image})`}"></div>
@@ -33,18 +33,14 @@
                                     <a href="javascript:;" class="list-group-item bg-transparent text-center">
                                         <div class="mb-0 text-uppercase text-center text-truncate">{{ category.name }}</div>
                                     </a>
-                                	<a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
-                                        Blazers & Suits
-                                    </a>
-                                    <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
-                                        Dresses
-                                    </a>
-                                    <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
-                                        Sportswear
-                                    </a>
-                                    <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
-                                        Hoodie & Sweatshirts
-                                    </a>
+                                    <div class="container-fluid p-0">
+                                        <div class="row g-0">
+                                            <div class="col-6" v-for="sub in category.sub_categories_with_limit" :key="sub.id">
+                                                <h6 class="cursor-pointer text-muted text-truncate mb-0 p-2 border-bottom"> {{ sub.name }} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                	
                                 </div>
                             </div>
                         </div>                       

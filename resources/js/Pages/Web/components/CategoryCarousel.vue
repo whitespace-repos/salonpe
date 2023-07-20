@@ -16,18 +16,11 @@
                                     <a href="javascript:;" class="list-group-item bg-transparent text-center">
                                         <div class="mb-0 text-uppercase text-center text-truncate">{{ category.name }}</div>
                                     </a>	
-                                    <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0">
-                                        Blazers & Suits
-                                    </a>
-                                    <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0 ">
-                                        Dresses
-                                    </a>
-                                    <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0">
-                                        Sportswear
-                                    </a>
-                                    <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0">
-                                        Hoodie & Sweatshirts
-                                    </a>
+                                    <template v-for="(sub,index) in category.sub_categories_with_limit" :key="sub.id">
+                                        <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-1 px-md-0" v-if="index < 4">
+                                            {{ sub.name }}
+                                        </a>
+                                    </template>
                                 </div>
                             </div>
                         </div>

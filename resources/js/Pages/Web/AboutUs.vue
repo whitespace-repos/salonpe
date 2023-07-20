@@ -67,149 +67,31 @@
                 <!--end row-->
             </div>
         </section>
+        <!--start brand-->
         <section class="py-4">
             <div class="container">
-                <h4>Our Top Brands</h4>
-                <hr>
-                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-xl-5 g-4">
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/01.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
+                <div class="separator pb-4">
+                    <div class="line"></div>
+                    <h5 class="mb-0 fw-bold separator-title">Popular Brands</h5>
+                    <div class="line"></div>
                     </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/02.png" class="img-fluid" alt="">
-                                </a>
+                <div class="popular-brands">
+                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-xl-5 g-4">
+                        <div class="col" v-for="brand in shopByBrands.brands" :key="brand.id">
+                            <div class="card shadow-none border">
+                                <div class="card-body">
+                                    <a href="javscript:;">
+                                        <img :src="brand.image" class="img-fluid" alt="" />
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        </div>                       
                     </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/03.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/04.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/05.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/06.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/07.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/08.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/09.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/10.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/11.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/12.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/13.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/14.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card border shadow-none">
-                            <div class="card-body">
-                                <a href="javscript:;">
-                                    <img src="@/assets/web/images/brands/15.png" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <!--end row-->
                 </div>
             </div>
         </section>
+        <!--end brand-->
     </WebLayout>
 </template>
 
@@ -222,7 +104,7 @@
     
     export default {
         data:(prop) =>({ showProductPrice , isEmpty }),
-        props : ["aboutUs", "featuredProducts"],
+        props : ["aboutUs", "featuredProducts","shopByBrands"],
         components : {WebLayout , Head }
     }
     

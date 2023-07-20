@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Wishlist extends Model
 {
     use HasFactory,SoftDeletes;
-
-    protected $fillable = ["user_id","product_id","attribute_id"];
+    // 
+    protected $casts = [
+            'product' => 'object',
+            'attribute' => 'object',
+            "moved_to_cart" => 'boolean',
+    ];
+    // 
+    protected $fillable = ["user_id","product_id","attribute_id","product","attribute","moved_to_cart"];
 }

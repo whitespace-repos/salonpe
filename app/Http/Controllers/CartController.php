@@ -12,6 +12,7 @@ use Product ;
 use Illuminate\Support\Facades\Auth;
 use Order;
 use Address;
+use Wishlist;
 
 class CartController extends Controller
 {
@@ -77,6 +78,16 @@ class CartController extends Controller
         $cart->quantity = $cart->items->count();
         $cart->save();
 
+        if($request->has("wishlist_id")){
+            $wishlist = Wishlist::find($request->wishlist_id);
+            $wishlist->moved_to_cart = true;
+            $wishlist->save();
+            $wishlist->delete();
+            return back();
+        }
+            
+
+        // axios response
         return response(true, 200);
     }
 
@@ -208,6 +219,9 @@ class CartController extends Controller
         $cart->load('items');
         return Inertia::render("Web/Payment",[ "cart" => $cart ]);
     }
+
+
+    
 
 
 }

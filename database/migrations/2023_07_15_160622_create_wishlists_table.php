@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->nullable()->constrained('products');
+            $table->json("product")->nullable();
+            $table->json("attribute")->nullable();  
             $table->foreignId('attribute_id')->nullable()->constrained('product_attributes');
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->boolean("moved_to_cart")->default(false);

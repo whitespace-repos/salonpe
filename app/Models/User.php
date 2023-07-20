@@ -45,8 +45,8 @@ class User extends Authenticatable
     ];
 
 
-    public function wishlist(){
-        return $this->hasMany(Wishlist::class);
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class)->whereMovedToCart(false);
     }
 
     public function cart(){

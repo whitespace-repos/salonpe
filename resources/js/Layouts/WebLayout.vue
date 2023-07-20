@@ -9,7 +9,8 @@
 					<nav class="navbar navbar-expand">
 						<div class="shiping-title d-none d-sm-flex">Welcome to Variety Cosmetics, Pune</div>
 						<ul class="navbar-nav ms-auto d-none d-lg-flex">
-							<li class="nav-item"><a class="nav-link" href="order-tracking.html">Track Order</a>
+							<li class="nav-item">
+								<inertia-link class="nav-link" :href="route('salonpe.account.order')">Track Order</inertia-link>
 							</li>
 							<li class="nav-item">
 								<inertia-link class="nav-link" :href="route('salonpe.aboutus')">About</inertia-link>
@@ -74,7 +75,7 @@
 									<ul class="navbar-nav">
 										<li class="nav-item" v-if="$page.props.auth.user != null"><inertia-link :href="route('salonpe.account.dashboard')" class="nav-link cart-link text-muted"><i class='bx bx-user'></i></inertia-link>
 										</li>
-										<li class="nav-item"><a href="wishlist.html" class="nav-link cart-link  text-muted position-relative wishlist"><span class="alert-count shadow-lg">{{ ( $page.props.auth.user == null )  ? 0 : $page.props.auth.user.wishlist_count}}</span><i class='bx bx-heart'></i> </a>
+										<li class="nav-item"><inertia-link :href="route('wishlists')" class="nav-link cart-link  text-muted position-relative wishlist"><span class="alert-count shadow-lg">{{ ( $page.props.auth.user == null )  ? 0 : $page.props.auth.user.wishlists_count}}</span><i class='bx bx-heart'></i> </inertia-link>
 										</li>
 										<li class="nav-item dropdown dropdown-large">
 											<inertia-link :href="route('cart.index')" class="nav-link  cart-link text-muted cart-count" >	<span class="alert-count shadow-lg">{{ ( $page.props.auth.user == null || $page.props.auth.user.active_cart == null)  ? 0 : $page.props.auth.user.active_cart.quantity}}</span>
@@ -203,7 +204,7 @@
 		<!--end slider section-->
 		<!--start page wrapper -->
 		<div class="page-wrapper mt-0">            
-			<div class="page-content" style="margin-top:198px">
+			<div class="page-content page-content-margin-top">
                 <slot />				
 			</div>
 		</div>

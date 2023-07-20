@@ -7,7 +7,7 @@
                         <thead class="table-light">
                             <tr>
                                 <th>Order</th>
-                                <th>Date</th>
+                                <th >Date</th>
                                 <th>Status</th>
                                 <th>Total</th>
                                 <th>Actions</th>
@@ -16,7 +16,7 @@
                         <tbody>                           
                             <tr v-for="order in orders" :key="order.id">
                                 <td>{{ `#POD${order.id}` }}</td>
-                                <td>{{  displayDate(order.created_at)  }}</td>
+                                <td width="240">{{  displayDate(order.created_at)  }}</td>
                                 <td>
                                     <div class="badge  bg-success w-100" v-if="order.payment && order.delivered">Delivered</div>
                                     <div class="badge  bg-warning text-black w-100" v-if="order.payment && !order.delivered">Paid but not delivered</div>
@@ -46,3 +46,4 @@
 
     defineProps(["orders"]);
 </script>
+

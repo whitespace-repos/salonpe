@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => empty($request->user()) ? $request->user() : $request->user()->load('activeCart')->loadCount(['wishlist']),
+                'user' => empty($request->user()) ? $request->user() : $request->user()->load('activeCart')->loadCount(['wishlists']),
                 'userCount' => User::count(),
                 'productCount' => Product::count(),
                 'brandCount' => Brand::count()

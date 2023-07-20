@@ -27,8 +27,13 @@
                         <div class="col mx-auto">
                             <div class="card mb-0 shadow-none">
                                 <div class="card-body">
-                                    <div class="p-4 rounded">                                        
+                                    <div class="p-0 px-md-4 rounded">                                        
                                         <div class="form-body">
+                                            <div class="text-center mb-3">
+                                                <h5 class="mb-0">Create your account</h5>
+                                                <span class="d-block">Enter your detail below</span>
+                                            </div>
+
                                             <form class="row g-3" @submit.prevent="submit">
                                                 <div class="col-12">
                                                     <label for="inputFirstName" class="form-label">Name</label>

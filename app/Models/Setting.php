@@ -30,8 +30,13 @@ class Setting extends Model
     protected function categories(): Attribute
     {
         return new Attribute(
-            get: fn ($value, $attributes) => ($attributes['data_type'] == "Entity" && $attributes['entity'] == 'Category') ? Category::select(['id','name','parent_id','image'])->whereIn('id',$this->data)->orderBy("id","desc")->get() : []
+            get: fn ($value, $attributes) => $this->loadCategories($attributes)
         );
+    }
+
+
+    public function loadCategories($attributes){
+        return ($attributes['data_type'] == "Entity" && $attributes['entity'] == 'Category') ? Category::with(['subCategoriesWithLimit'])->select(['id','name','parent_id','image'])->whereIn('id',$this->data)->orderBy("id","desc")->get() : [];
     }
 
 

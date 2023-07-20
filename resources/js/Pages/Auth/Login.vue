@@ -31,7 +31,7 @@ const submit = () => {
     	<!-- Content area -->
 		<div class="content d-flex justify-content-center align-items-center py-5">
             <!-- Login form -->
-            <form class="login-form"  @submit.prevent="submit">
+            <form class="login-form w-100 w-md-25"  @submit.prevent="submit">
                 <div class="card mb-0">
                     <div class="card-body">
                         <div class="text-center mb-3">

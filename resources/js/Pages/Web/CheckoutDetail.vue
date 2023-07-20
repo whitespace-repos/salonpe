@@ -134,16 +134,16 @@
                             shippingAddress : prop.cart.address_id,
                             form : {
                                         address : prop.$inertia.form({
-                                                                        first_name : 'Ankit',
-                                                                        last_name : 'Sethi',
-                                                                        address_1 : 'V.P.O Daulatpur Chowk Teh. Amb Distt Una',
+                                                                        first_name : '',
+                                                                        last_name : '',
+                                                                        address_1 : '',
                                                                         address_2 : null,
-                                                                        email : '4nkitsethi@gmail.com',
-                                                                        phone : '8219590399',
-                                                                        company : 'LLC',
-                                                                        state :'Himachal Pradesh',
-                                                                        zip : '177204',
-                                                                        country : 'India',
+                                                                        email : '',
+                                                                        phone : '',
+                                                                        company : '',
+                                                                        state :'',
+                                                                        zip : '',
+                                                                        country : '',
                                                                         customer : null,
                                                                         plain : null
                                         })

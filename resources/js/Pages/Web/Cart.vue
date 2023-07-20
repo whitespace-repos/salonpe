@@ -95,7 +95,7 @@
                     </div>
                     <!--end row-->
                 </div>
-                <div class="card card-body w-50 shadow-none text-center mx-auto" v-else>
+                <div class="card card-body w-md-50 shadow-none text-center mx-auto" v-else>
                     <i class='bx bx-cart-add display-1'></i>
                     <p>Your cart is empty ! Please add some item to cart </p>
                     <inertia-link :href="route('salonpe.index')" class="btn btn-warning rounded-2 mx-auto px-5" href="index.html">Go back shopping</inertia-link>

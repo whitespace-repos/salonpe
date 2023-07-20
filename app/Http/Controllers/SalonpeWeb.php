@@ -39,8 +39,10 @@ class SalonpeWeb extends Controller
 
     public function aboutUs(){        
         $aboutus = Setting::where("name" , "AboutUs")->first();
+        $shopByBrands = Setting::where("name","ShopByBrands")->where("group","Website")->first();
         return Inertia::render("Web/AboutUs",[
                                                 "aboutUs" => $aboutus,
+                                                "shopByBrands" => $shopByBrands,
                                                 "featuredProducts" => Setting::where("name" , "FeaturedProducts")->where("group","Website")->first()
                                             ]);
     }

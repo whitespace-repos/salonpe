@@ -76,8 +76,25 @@
 }
 
 .logo-icon-gif {  width:  21% !important; }
-@media (max-width: 576px) { .logo-icon-gif {  width:  70% !important } }
+@media (max-width: 576px) { 
+    .logo-icon-gif {  width:  70% !important }
+    .page-content-margin-top{
+            margin-top:250px !important;
+    }
+ }
 
 .btn-check:focus+.btn, .btn:focus { 
     box-shadow:  unset !important;
+}
+
+.page-content-margin-top{
+                        margin-top:198px
+}
+
+.table-responsive table th,
+.table-responsive table td{
+    /*use this property to disbale soft wrap*/
+    white-space: nowrap;
+    /*To make extra certain,add this css property*/
+    word-break: keep-all;
 }

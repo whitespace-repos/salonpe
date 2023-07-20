@@ -145,7 +145,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-7 ps-4">
+                            <div class="col-12 col-lg-7 ps-md-4">
                                 <div class="product-info-section pb-3 px-3 d-flex flex-column h-100">
                                     <h6 class="mt-3 mt-lg-0 mb-0 fw-bold">{{ quickPreviewProduct.name }}</h6>
                                     <div class="product-rating d-flex align-items-center mt-2 d-none">
@@ -363,7 +363,7 @@
                             return 
                         }
                         let cartCountIconEle = document.querySelector(".top-cart-icons .cart-count span");
-                        console.log(cartCountIconEle);
+                   
 
                         this.axios
                             .post(this.route('cart.store'),  { product : this.quickPreviewProduct.id , attribute : this.quickPreviewAttribute.id , quantity : this.quickPreviewQuantity })
