@@ -9,16 +9,16 @@
         <!--end brands-->
         
         <!-- Featured Products -->
-        <Carousel :products="FeaturedProducts.products" :heading="'FEATURED PRODUCTS'" @selected-product="quickPreview" :id="'featuredProducts'" :timeout="3000"/>
+        <Carousel :products="featuredProductInstance" :heading="'FEATURED PRODUCTS'" @selected-product="quickPreview" :id="'featuredProducts'" :timeout="3000" :name="'featured'"/>
         
 		<!-- Top Categories -->
-        <TopCategories :categories="TopCategories.categories" @selected-product="quickPreview"/>
+        <TopCategories :categories="topCategoriesInstance" @selected-product="quickPreview" :name="'topCategories'"/>
         
         <!-- Best Selling -->
-        <Carousel :products="BestSelling.products" :heading="'Best Selling'" @selected-product="quickPreview" :id="'bestSellingProducts'" :timeout="3500"/>
+        <Carousel :products="bestSellingInstance" :heading="'Best Selling'" @selected-product="quickPreview" :id="'bestSellingProducts'" :timeout="3500"  :name="'bestSelling'"/>
 
         <!-- Best Offers -->
-        <Carousel :products="BestOffer.products" :heading="'Best Offers'" @selected-product="quickPreview" :id="'bestOffersProducts'" :timeout="5500"/>
+        <Carousel :products="bestOfferInstance" :heading="'Best Offers'" @selected-product="quickPreview" :id="'bestOffersProducts'" :timeout="5500"  :name="'bestOffer'"/>
        
         <!--start Advertise banners-->
         <section class="py-4 bg-dark">
@@ -130,7 +130,7 @@
 
         
 
-        <div class="modal fade" id="QuickViewProduct" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal fade" id="QuickViewProduct"  data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-xl-down">            
                 <div class="modal-content rounded-0 border-0">
                     <div class="modal-body" v-if="quickPreviewProduct != null">
@@ -185,12 +185,8 @@
 
                                         <div class="col">
                                             <label class="form-label">Quantity</label>
-                                            <select class="form-select form-select-sm">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                            <select class="form-select form-select-sm" v-model="quickPreviewQuantity">
+                                                <option v-for="quantity in 10" :key="quantity" :value="quantity">{{ quantity }}</option>
                                             </select>
                                         </div>
                                         <div class="col">                                            
@@ -212,8 +208,11 @@
                                     </div>
                                     <!--end row-->
                                     <div class="d-flex gap-2 pt-2 mt-auto">
-                                        <a href="javascript:;" class="btn btn-dark btn-ecomm bg-yellow px-4 text-black">	<i class="bx bxs-cart-add"></i>Cart</a>
-                                        <a href="javascript:;" class="btn btn-light btn-ecomm px-4"><i class="bx bx-heart"></i>Wishlist</a>
+                                        <a href="javascript:;" class="btn btn-light border-0 btn-ecomm bg-yellow px-4 text-black" @click="addToCart">	<i class="bx bxs-cart-add"></i>Cart  <sup class="text-semibold  ms-2">{{  displayPrice(getQuickPreviewTotal) }}</sup></a>
+                                        <a href="javascript:;" class="btn btn-light btn-ecomm wishlist-link px-4" @click="addToWishlist">
+                                            <span class="spinner-border spinner-border-sm d-none"></span>
+                                            <i class="bx " :class="{ 'bxs-heart' : quickPreviewAttribute.wishlist , 'bx-heart' : !quickPreviewAttribute.wishlist}"></i>Wishlist
+                                        </a>                                        
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +244,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
     </WebLayout>	
 </template>
 
@@ -259,27 +258,47 @@
     import TopBrands from './components/TopBrands.vue';
     // 
     import { Head } from '@inertiajs/vue3';
-    import { showProductPrice , slickCarouselConfig , currency , discountedPricePercentage } from "@/utils";
+    import { showProductPrice , slickCarouselConfig , currency , discountedPricePercentage , displayPrice} from "@/utils";
     import isEmpty from 'lodash/isEmpty';
     import head from 'lodash/head'
-
+    import find from 'lodash/find'
+    import { Modal } from 'bootstrap';
     import "@fancyapps/ui/dist/carousel/carousel.autoplay.css";
     import '@fancyapps/ui/dist/carousel/carousel.css';
     // 
-    export default {
+    export default {    
+        props: ["FeaturedProducts","TopCategories","BestOffer","BestSelling","banners","shopByBrands","browseCategories","wishlistCount" , "auth"],
         data: (prop) => ({ 
                             isEmpty , head ,
                             currency, discountedPricePercentage,
-                            showProductPrice, 
+                            showProductPrice, displayPrice, 
                             quickPreviewProduct : null,
                             quickPreviewAttribute : null,
                             quickPreviewMedia : [],
-                            quickPreviewImage : null
+                            quickPreviewQuantity:1,
+                            quickPreviewImage : null,
+                            quickPreviewModule : null,
+                            categoryProducts : [],
+                            featuredProductInstance : prop.FeaturedProducts.products,
+                            bestOfferInstance : prop.BestOffer.products,
+                            bestSellingInstance : prop.BestSelling.products,
+                            topCategoriesInstance : prop.TopCategories.categories                            
                         }),
-        props: ["FeaturedProducts","TopCategories","BestOffer","BestSelling","banners","shopByBrands","browseCategories"],
+        computed:{
+                    getQuickPreviewTotal(){
+                        let attribute = this.quickPreviewAttribute
+                        let quantity = this.quickPreviewQuantity
+                        return (attribute.discounted_mrp == 0) ? (attribute.mrp * quantity) : (attribute.discounted_mrp * quantity);
+                    }            
+        },
         components : { WebLayout , Head , Carousel , CategoryCarousel, MainCarousel, TopCategories , QuickPreview , TopBrands},
         methods:{
-                    quickPreview(product){
+                    quickPreview(obj){
+                        let product = head(obj)
+                        this.quickPreviewModule = obj[1]
+                        if(this.quickPreviewModule == 'topCategories')
+                            this.categoryProducts = obj[2].products
+                        //
                         this.quickPreviewProduct = product
                         if(isEmpty(product.attributes)){
                             this.quickPreviewMedia = []
@@ -287,6 +306,71 @@
                             this.quickPreviewAttribute = head(product.attributes)
                             this.quickPreviewMedia =  this.quickPreviewAttribute.media
                         }
+                    },
+                    addToWishlist(e){ 
+                        if(isEmpty(this.auth.user)){
+                            this.$toast.error("Login is required for Wishlist.") 
+                            return 
+                        }
+
+                        let element = (e.target.nodeName == 'A') ? e.target : e.target.parentElement;
+                        element.querySelector("span").classList.remove("d-none")
+                        this.axios
+                            .get(this.route('add.to.wishlist'),  { params: { product : this.quickPreviewProduct.id , attribute : this.quickPreviewAttribute.id } })
+                            .then((res) =>{
+
+                                
+                                
+                                let menuIconEle = document.querySelector(".wishlist span");
+                                element.querySelector("span").classList.add("d-none")
+                                let products = []
+                                switch (this.quickPreviewModule) {
+                                    case 'featured':
+                                        products = this.featuredProductInstance
+                                        break;                                
+                                    case 'bestSelling':
+                                        products = this.bestSellingInstance
+                                        break;  
+                                    case 'bestOffer':
+                                        products = this.bestOfferInstance
+                                        break; 
+                                    case 'topCategories':
+                                        products = this.categoryProducts
+                                        break;                                
+                                    default:
+                                        break;
+                                }
+                                // 
+                                let product = find(products,item =>  { return item.id == this.quickPreviewProduct.id })
+                                let attribute = find(product.attributes , attr => { return attr.id == this.quickPreviewAttribute.id })
+
+                                if(res.data){                                   
+                                    menuIconEle.innerHTML = parseInt(menuIconEle.innerText) - 1;                               
+                                    //element.querySelector("i").classList.remove("bxs-heart")                                  
+                                    attribute.wishlist = false
+                                    this.$toast.success("Product removed from wishlist.") 
+                                }else{
+                                    menuIconEle.innerHTML = parseInt(menuIconEle.innerText) + 1;                               
+                                    //element.querySelector("i").classList.add("bxs-heart")                                  
+                                    attribute.wishlist = true
+                                    this.$toast.success("Product added to wishlist.") 
+                                }                                
+                            });       
+                    },
+                    addToCart(e){ 
+                        if(isEmpty(this.auth.user)){
+                            this.$toast.error("Login is required for Cart.") 
+                            return 
+                        }
+                        let cartCountIconEle = document.querySelector(".top-cart-icons .cart-count span");
+                        console.log(cartCountIconEle);
+
+                        this.axios
+                            .post(this.route('cart.store'),  { product : this.quickPreviewProduct.id , attribute : this.quickPreviewAttribute.id , quantity : this.quickPreviewQuantity })
+                            .then((res) =>{ 
+                                cartCountIconEle.innerHTML = parseInt(cartCountIconEle.innerText) + 1;  
+                                this.$toast.success("Product added to cart.")                              
+                            });       
                     }
         },
         watch: {
@@ -297,8 +381,11 @@
                 },
             },
         },
-        mounted () {
-            //$('.product-thumbs,.browse-category,.brands-shops').slick(slickCarouselConfig); 
+        mounted () {            
+            const quickPreviewModal = document.getElementById('QuickViewProduct')
+            quickPreviewModal.addEventListener('shown.bs.modal', e => {                 
+                this.quickPreviewQuantity = 1
+            })
         }
     }
 </script>

@@ -1,6 +1,6 @@
 import isEmpty from "lodash/isEmpty"
 import head from "lodash/head"
-
+import moment from 'moment'
 // 
 function currency(value){
     return "₹"+Number(value).toFixed(2);
@@ -23,7 +23,7 @@ function showProductPrice(product){
 }
 
 function displayPrice(amount){
-    return "₹"+Number(amount).toFixed(2)
+    return "₹"+ Number(amount).toFixed(2)
 }
 
 
@@ -82,7 +82,11 @@ let slickCarouselConfig = {
     function discountedPricePercentage(current, original){ 
                                                             let differnce = original - current;                                                       
                                                             return  Number(( differnce / original ) * 100).toFixed(2);
-        }                            
+        }   
+
+    function displayDate($date , $format = "MMM Do YY"){
+        return moment($date).format($format);
+    }
 
 
-export { currency , scale , showProductPrice , slickCarouselConfig , discountedPricePercentage, displayPriceHtml}
+export { currency , scale , showProductPrice , slickCarouselConfig , discountedPricePercentage, displayPriceHtml, displayPrice , displayDate}

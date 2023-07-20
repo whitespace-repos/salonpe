@@ -17,7 +17,11 @@ use Inertia\Inertia;
 use App\Models\Setting;
 use App\Http\Controllers\SalonpeWeb;
 use App\Http\Controllers\MediaController;
-
+use App\Http\Controllers\Catalog;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\MyAccount;
+use App\Http\Controllers\Orders;
+use App\Http\Controllers\RazorpayController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,21 +41,14 @@ Route::get('/store',[ SalonpeWeb::class , 'store'])->name("salonpe.store");
 Route::get('/product/detail/{product}', [SalonpeWeb::class , 'productDetail'])->name("salonpe.product.detail");
 
 Route::get('/wishlist', function () {    return Inertia::render("Web/Wishlist"); })->name("salonpe.wishlist");
-
-Route::get('/account-dashboard', function () {    return Inertia::render("Web/AccountDashboard"); })->name("salonpe.account.dashboard");
-Route::get('/account-orders', function () {    return Inertia::render("Web/AccountOrder"); })->name("salonpe.account.order");
-Route::get('/account-profile', function () {    return Inertia::render("Web/AccountProfile"); })->name("salonpe.account.profile");
-Route::get('/account-profile-edit', function () {    return Inertia::render("Web/AccountEditProfile"); })->name("salonpe.account.profile.edit");
-Route::get('/account-save-address', function () {    return Inertia::render("Web/AccountSaveAddress"); })->name("salonpe.account.save.address");
-Route::get('/account-login', function () {    return Inertia::render("Web/Login"); })->name("salonpe.account.login");
-Route::get('/account-register', function () {    return Inertia::render("Web/Register"); })->name("salonpe.account.register");
-Route::get('/blogs', function () {    return Inertia::render("Web/Blogs"); })->name("salonpe.blogs");
-Route::get('/blog/read', function () {    return Inertia::render("Web/BlogRead"); })->name("salonpe.blog.read");
-
-Route::get('/payment/method', function () {    return Inertia::render("Web/PaymentMethod"); })->name("salonpe.payment.method");
-Route::get('/billing', function () {    return Inertia::render("Web/BillingDetail"); })->name("salonpe.billing");
+Route::get('/account-dashboard',[MyAccount::class , 'dashboard'])->name("salonpe.account.dashboard");
+Route::get('/account-orders',[MyAccount::class , 'orders'])->name("salonpe.account.order");
+Route::get('/account-addresses',[MyAccount::class , 'addresses'])->name("salonpe.account.addresses");
+Route::get('/account-detail',[MyAccount::class , 'detail'])->name("salonpe.account.detail");
+Route::get('/account-payment-method',[MyAccount::class , 'paymentMethod'])->name("salonpe.account.payment.method");
 Route::get('/product/filter', function () {    return Inertia::render("Web/ProductFilteration"); })->name("salonpe.product.filter");
-Route::get('/cart', function () {    return Inertia::render("Web/Cart"); })->name("salonpe.cart");
+
+
 
 
 
@@ -68,7 +65,20 @@ Route::resource('/tag',Tags::class);
 Route::resource('/setting',Settings::class);
 Route::resource('/banner',Banners::class);
 Route::resource('/media', MediaController::class);
+Route::resource('/account',MyAccount::class);
+Route::resource('/order',Orders::class);
+//
+Route::get('cart',[CartController::class , 'index'])->name("cart.index");
+Route::post('cart',[CartController::class , 'store'])->name("cart.store");
+Route::delete('cart/{id}',[CartController::class,'destroy'])->name("cart.destroy");
+Route::delete('cart/items/clear',[CartController::class , 'clear'])->name("cart.clear");
+Route::get('cart/checkout/detail',[CartController::class,'detail'])->name("cart.checkout.detail");
+Route::get('cart/shipping/detail',[CartController::class,'shippingDetail'])->name("cart.shipping.detail");
+Route::get('cart/make/payment',[CartController::class,'makePayment'])->name("cart.make.payment");
+Route::post("cart/payment/handle",[RazorpayController::class,'handlePayment'])->name("cart.payment.handle");
+Route::get("cart/payment/success",[RazorpayController::class,'success'])->name("cart.payment.success");
 
+Route::post('cart/save/address',[CartController::class,'saveAddress'])->name('cart.save.address');
 Route::get("/setting/edit/{type}",[Settings::class,'settingEdit'])->name("setting.edit.type");
 Route::post("/setting/edit/{type}",[Settings::class,'settingStore'])->name("setting.store.type");
 // 
@@ -80,7 +90,7 @@ Route::get('product-attribute/{attributeId}/edit',[Products::class,'editProductA
 Route::post('product-attribute-store/{productId}',[Products::class,'storeProductAttribute'])->name('store.product.attribute');
 
 Route::get('/dashboard', [Dashboard::class, 'dashboard'])->middleware("auth")->name('dashboard');
-
+Route::get('/wishlist/add',[Catalog::class, 'addToWishlist'])->name("add.to.wishlist");
 // 
 Route::get("/website-landing", [ Websites::class , 'landing'])->name("website.page.landing");
 Route::post("/store-featured-offer-selling-product",[ Websites::class, 'storeFeaturedOfferSellingProduct'])->name("storeFeaturedOfferSellingProduct");

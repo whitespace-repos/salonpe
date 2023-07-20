@@ -9,6 +9,7 @@ use Product;
 use Brand;
 use User;
 use Setting;
+use Wishlist;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -36,7 +37,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => $request->user(),
+                'user' => empty($request->user()) ? $request->user() : $request->user()->load('activeCart')->loadCount(['wishlist']),
                 'userCount' => User::count(),
                 'productCount' => Product::count(),
                 'brandCount' => Brand::count()

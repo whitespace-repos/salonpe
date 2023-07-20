@@ -17,7 +17,7 @@
                                         <a href="javascript:;"><i class='bx bx-cart-add' ></i></a>
                                     </div>
                                     <div class="quick-view position-absolute start-0 bottom-0 end-0 p-0">
-                                        <a href="javascript:void(0);" @click="$emit('selectedProduct',product)" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" class="p-2">Quick View</a>
+                                        <a href="javascript:void(0);" @click="$emit('selectedProduct',[product,name])" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" class="p-2">Quick View</a>
                                     </div>
                                     <div class="product-image bg-thumb" :style="{ backgroundImage : `url(${product.thumb_image})`}" ></div>
                                 </div>
@@ -45,7 +45,7 @@
     
     export default {
         data:(prop) =>({ showProductPrice , isEmpty , displayPriceHtml}),
-        props:["products" , "heading" , "id" ,'timeout'],
+        props:["products" , "heading" , "id" ,'timeout' , 'name'],
         emits: ['selectedProduct'],        
         mounted () {
             new Carousel(document.getElementById(this.id), {

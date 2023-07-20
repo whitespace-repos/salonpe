@@ -3,7 +3,7 @@
     <!--wrapper-->
 	<div class="wrapper">
 		<!--start top header wrapper-->
-		<div class="header-wrapper">
+		<div class="header-wrapper fixed-top">
 			<div class="top-menu">
 				<div class="container">
 					<nav class="navbar navbar-expand">
@@ -72,152 +72,14 @@
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav">
-										<li class="nav-item"><a href="account-dashboard.html" class="nav-link cart-link text-muted"><i class='bx bx-user'></i></a>
+										<li class="nav-item" v-if="$page.props.auth.user != null"><inertia-link :href="route('salonpe.account.dashboard')" class="nav-link cart-link text-muted"><i class='bx bx-user'></i></inertia-link>
 										</li>
-										<li class="nav-item"><a href="wishlist.html" class="nav-link cart-link  text-muted position-relative"><span class="alert-count shadow-lg">0</span><i class='bx bx-heart'></i> </a>
+										<li class="nav-item"><a href="wishlist.html" class="nav-link cart-link  text-muted position-relative wishlist"><span class="alert-count shadow-lg">{{ ( $page.props.auth.user == null )  ? 0 : $page.props.auth.user.wishlist_count}}</span><i class='bx bx-heart'></i> </a>
 										</li>
 										<li class="nav-item dropdown dropdown-large">
-											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link text-muted" data-bs-toggle="dropdown">	<span class="alert-count shadow-lg">8</span>
+											<inertia-link :href="route('cart.index')" class="nav-link  cart-link text-muted cart-count" >	<span class="alert-count shadow-lg">{{ ( $page.props.auth.user == null || $page.props.auth.user.active_cart == null)  ? 0 : $page.props.auth.user.active_cart.quantity}}</span>
 												<i class='bx bx-shopping-bag'></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-end">
-												<a href="javascript:;">
-													<div class="cart-header">
-														<p class="cart-header-title mb-0">8 ITEMS</p>
-														<p class="cart-header-clear ms-auto mb-0">VIEW CART</p>
-													</div>
-												</a>
-												<div class="cart-list  overflow-auto">
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men White T-Shirt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/01.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Puma Sports Shoes</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/05.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Women Red Sneakers</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/17.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Black Headphone</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/10.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Blue Girl Shoes</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/08.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men Leather Belt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/18.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men Yellow T-Shirt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/04.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Pool Charir</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="@/assets/web/images/products/16.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-												</div>
-												<a href="javascript:;">
-													<div class="text-center cart-footer d-flex align-items-center">
-														<h5 class="mb-0">TOTAL</h5>
-														<h5 class="mb-0 ms-auto">$189.00</h5>
-													</div>
-												</a>
-												<div class="d-grid p-3 border-top">	<a href="javascript:;" class="btn btn-dark btn-ecomm">CHECKOUT</a>
-												</div>
-											</div>
+											</inertia-link>
 										</li>
 									</ul>
 								</nav>
@@ -310,49 +172,22 @@
 							<li class="nav-item d-block d-md-none">
 								<inertia-link class="nav-link" :href="route('salonpe.contactus')">Contact</inertia-link>
 							</li>
-						  <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-								Account <i class='bx bx-chevron-down ms-1'></i> 
-							</a>
-							<ul class="dropdown-menu">
-								<li class="nav-item dropdown"><a class="dropdown-item dropdown-toggle dropdown-toggle-nocaret" href="#">Shop Layouts <i class='bx bx-chevron-right float-end'></i></a>
-									<ul class="submenu dropdown-menu">
-										<li><a class="dropdown-item" href="shop-grid-left-sidebar.html">Shop Grid - Left Sidebar</a>
-										</li>
-										<li><a class="dropdown-item" href="shop-grid-right-sidebar.html">Shop Grid - Right Sidebar</a>
-										</li>
-										<li><a class="dropdown-item" href="shop-list-left-sidebar.html">Shop List - Left Sidebar</a>
-										</li>
-										<li><a class="dropdown-item" href="shop-list-right-sidebar.html">Shop List - Right Sidebar</a>
-										</li>
-										<li><a class="dropdown-item" href="shop-grid-filter-on-top.html">Shop Grid - Top Filter</a>
-										</li>
-										<li><a class="dropdown-item" href="shop-list-filter-on-top.html">Shop List - Top Filter</a>
-										</li>
-									</ul>
-								</li>
-								<li><a class="dropdown-item" href="product-details.html">Product Details</a>
-								</li>
-								<li><a class="dropdown-item" href="shop-cart.html">Shop Cart</a>
-								</li>
-								<li><a class="dropdown-item" href="shop-categories.html">Shop Categories</a>
-								</li>
-								<li><a class="dropdown-item" href="checkout-details.html">Billing Details</a>
-								</li>
-								<li><a class="dropdown-item" href="checkout-shipping.html">Checkout Shipping</a>
-								</li>
-								<li><a class="dropdown-item" href="checkout-payment.html">Payment Method</a>
-								</li>
-								<li><a class="dropdown-item" href="checkout-review.html">Order Review</a>
-								</li>
-								<li><a class="dropdown-item" href="checkout-complete.html">Checkout Complete</a>
-								</li>
-								<li><a class="dropdown-item" href="order-tracking.html">Order Tracking</a>
-								</li>
-								<li><a class="dropdown-item" href="product-comparison.html">Product Comparison</a>
-								</li>
-							</ul>
-						  </li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+								Account
+								</a>
+								<ul class="dropdown-menu">
+									<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.dashboard')">Dashboard</inertia-link>
+									</li>
+									<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.order')">My Orders</inertia-link>
+									</li>
+									<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.detail')">User Detail</inertia-link>
+									</li>
+									<li v-if="$page.props.auth.user == null"><inertia-link class="dropdown-item" :href="route('account.create')">Register</inertia-link></li>
+									<li v-if="$page.props.auth.user == null"><inertia-link class="dropdown-item" :href="route('account.show','login')">Login</inertia-link></li>
+								</ul>
+							</li>
+						  
 						</ul>
 					  </div>					  
 					</div>						
@@ -368,7 +203,7 @@
 		<!--end slider section-->
 		<!--start page wrapper -->
 		<div class="page-wrapper mt-0">            
-			<div class="page-content">
+			<div class="page-content" style="margin-top:198px">
                 <slot />				
 			</div>
 		</div>

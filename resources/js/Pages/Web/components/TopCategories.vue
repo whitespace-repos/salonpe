@@ -29,7 +29,7 @@
                                             <a href="javascript:;"><i class='bx bx-cart-add' ></i></a>
                                         </div>
                                         <div class="quick-view position-absolute start-0 bottom-0 end-0">
-                                            <a href="javascript:;" @click="$emit('selectedProduct',product)" data-bs-toggle="modal" data-bs-target="#QuickViewProduct">Quick View</a>
+                                            <a href="javascript:;" @click="$emit('selectedProduct',[product,name,category])" data-bs-toggle="modal" data-bs-target="#QuickViewProduct">Quick View</a>
                                         </div>
                                         <div class="product-image bg-thumb" :style="{ backgroundImage : `url(${product.thumb_image})`}" ></div>
                                     </div>
@@ -73,7 +73,7 @@
     import isEmpty from 'lodash/isEmpty'
     export default {
         data: (prop) => ({ isEmpty , showProductPrice , displayPriceHtml }),
-        props : ["categories"],
+        props : ["categories","name"],
         emits: ['selectedProduct'],  
     }
 </script>

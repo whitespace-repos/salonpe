@@ -193,6 +193,13 @@ return [
         'Tag' => App\Models\Tag::class,
         'Setting' => App\Models\Setting::class,
         'Banner' => App\Models\Banner::class,
+        'Wishlist' => App\Models\Wishlist::class,
+        'Cart' => App\Models\Cart::class,
+        'CartItem' => App\Models\CartItem::class,
+        'Address' => App\Models\Address::class,
+        'Order' => App\Models\Order::class,
+        'Payment' => App\Models\Payment::class,
+        'TrackOrder' => App\Models\TrackOrder::class,
     ])->toArray(),
 
 ];

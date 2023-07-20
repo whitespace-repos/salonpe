@@ -54,7 +54,9 @@ class SalonpeWeb extends Controller
 
 
     public function store(){       
-        return Inertia::render("Web/OurStore");
+        $shopByBrands = Setting::where("name","ShopByBrands")->where("group","Website")->first();
+        $browseCategories = Setting::where("name","BrowseCategories")->where("group","Website")->first();
+        return Inertia::render("Web/OurStore", [ 'shopByBrands' => $shopByBrands , "browseCategories" => $browseCategories ]);
     }
 
 

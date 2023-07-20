@@ -20,6 +20,9 @@ const appName = window.document.getElementsByTagName('title')[0]?.innerText || '
 // Jquery instace
 import $ from 'jquery';
 window.$ = $;
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -29,6 +32,7 @@ createInertiaApp({
             .use(plugin)
             .use(VueSnip)
             .use(ZiggyVue, Ziggy)
+            .use(VueAxios, axios)
             .use(ToastPlugin , {
                 // One of the options
                 position: 'top-right'

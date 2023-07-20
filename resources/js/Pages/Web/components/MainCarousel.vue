@@ -1,5 +1,5 @@
 <template>
-    <section class="slider-section">
+    <section class="slider-section" style="margin-top: 198px;">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <template v-for="(banner,index) in banners" :key="banner.id">
