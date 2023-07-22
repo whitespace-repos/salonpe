@@ -81,6 +81,7 @@ Route::get("cart/payment/success",[RazorpayController::class,'success'])->name("
 Route::post('cart/save/address',[CartController::class,'saveAddress'])->name('cart.save.address');
 Route::get("/setting/edit/{type}",[Settings::class,'settingEdit'])->name("setting.edit.type");
 Route::post("/setting/edit/{type}",[Settings::class,'settingStore'])->name("setting.store.type");
+
 // 
 Route::get('/sub-category',[Categories::class,'subCategoryIndex'])->name('sub.category.index');
 Route::get('/sub-category/create',[Categories::class,'subCategoryCreate'])->name('sub.category.create');
@@ -97,6 +98,7 @@ Route::get('/toggle/wishlist',[Catalog::class,'toggleWishlist'])->name('toggle.w
 Route::get("/website-landing", [ Websites::class , 'landing'])->name("website.page.landing");
 Route::post("/store-featured-offer-selling-product",[ Websites::class, 'storeFeaturedOfferSellingProduct'])->name("storeFeaturedOfferSellingProduct");
 Route::get("/remove-featured-offer-selling-product/{id}/{type}",[ Websites::class, 'removeFeaturedOfferSellingProduct'])->name("removeFeaturedOfferSellingProduct");
+Route::post('save/categories/menu',[Websites::class,'saveCategoriesMenu'])->name("website.save.categories.menu");
 
 
 require __DIR__.'/auth.php';

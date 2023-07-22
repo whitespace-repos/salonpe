@@ -43,6 +43,7 @@ class HandleInertiaRequests extends Middleware
                 'brandCount' => Brand::count()
             ],
             "website" => Setting::where("name" , "Website")->first(),
+            "categoriesMenu" =>  Setting::where("name","CategoriesMenu")->first(),
             'quillToolbar' => [
                                 ['bold', 'italic', 'underline', 'strike'], 
                                 ['link', 'blockquote'], 

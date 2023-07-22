@@ -21,8 +21,7 @@ class Products extends Controller
      */
     public function index(Request $request)
     {
-        //
-       
+        //       
         return Inertia::render('Products/Index', [
             'filters' => ['search', 'trashed'],
             'categories' => Category::whereNull('parent_id')->get(),

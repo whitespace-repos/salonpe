@@ -35,6 +35,7 @@ class Websites extends Controller
                                                         "shopByBrands" => Setting::where("name","ShopByBrands")->where("group","Website")->first(),
                                                         "brandsList" => Brand::select(['id','name','image'])->whereNotNull("image")->get(),
                                                         "browseCategories" => Setting::where("name","BrowseCategories")->where("group","Website")->first(),
+                                                        "categoriesMenu" =>  Setting::where("name","CategoriesMenu")->first()
                                                     ]);
     }
 
@@ -57,6 +58,11 @@ class Websites extends Controller
         $setting = Setting::where("name" , $name)->where("group","Website")->first();        
         $setting->data = array_values(array_diff($setting->data->toArray(),[$id]));
         $setting->save();
+        return back();
+    }
+
+    public function saveCategoriesMenu(Request $request){
+        Setting::where('name',"CategoriesMenu")->update([ "data" => $request->menus ]);
         return back();
     }
 

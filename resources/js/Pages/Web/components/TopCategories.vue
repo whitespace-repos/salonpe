@@ -33,24 +33,10 @@
                                         </div>
                                         <div class="product-image bg-thumb" :style="{ backgroundImage : `url(${product.thumb_image})`}" ></div>
                                     </div>
-                                    <div class="card-body  d-flex flex-column">
-                                        <div class="d-flex align-items-start justify-content-between">
-                                            <div class="">
-                                                <p class="mb-1 product-short-name">{{ isEmpty(product.category) ? '' : product.category.name }}</p>
-                                                <p class="mb-0 fw-bold product-short-title" v-snip="{ lines: 2 }">{{ product.name }}</p>
-                                            </div>
-                                            <div class="icon-wishlist">
-                                                <a href="javascript:;"><i class="bx bx-heart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="cursor-pointer rating mt-auto">
-                                            <i class="bx bxs-star text-warning"></i>
-                                            <i class="bx bxs-star text-warning"></i>
-                                            <i class="bx bxs-star text-warning"></i>
-                                            <i class="bx bxs-star text-warning"></i>
-                                            <i class="bx bxs-star text-warning"></i>
-                                        </div>
-                                        <div class="product-price d-flex align-items-center justify-content-start gap-0 gap-md-1 flex-wrap flex-md-nowrap mt-2" v-html="displayPriceHtml(product)"></div>
+                                    <div class="card-body d-flex  flex-column py-2">
+                                        <small>{{ isEmpty(product.category) ? '' : product.category.name }}</small>
+                                        <p class="mb-0 text-black" v-snip="{ lines: 2 }">{{ product.name }}</p>
+                                        <div class="product-price d-flex align-items-center justify-content-start mt-auto gap-0 gap-md-1 flex-wrap flex-md-nowrap" v-html="displayPriceHtml(product)"></div>
                                     </div>
                                 </div>
                             </div>

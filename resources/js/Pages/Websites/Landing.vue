@@ -175,6 +175,41 @@
                 </form>
             </div>
 
+
+            <!-- Categories Menu -->
+            <div class="card-header fw-bold">Categories Menu</div>
+            <div class="card-body">
+                <form class="container" @submit.prevent="saveCategoriesMenu">
+                    <div class="row mb-2" v-for="(menu,index) in form.categoriesMenu.menus">
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label class="form-label" v-if="index == 0">Menu Label</label>
+                                <input type="text" class="form-control" placeholder="Menu Label ..." v-model="menu.label"/>
+                            </div>                                
+                        </div>
+
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label class="form-label" v-if="index == 0">Choose Categories </label>
+                                <multiselect placeholder="Choose Categories ..." v-model="menu.categories" label="name" track-by="name" :options="categoriesShortList" :multiple="true" :searchable="true"></multiselect>
+                            </div>                                
+                        </div>
+
+                        <div class="col-1  d-flex align-items-end">
+                            <span class="btn btn-primary py-2 px-3" @click="addNewLabelToCategoriesMenu" v-if="index == 0"><i class="ph ph-plus"></i></span>
+                            <span class="btn btn-danger py-2 px-3" @click="removeLabelToCategoriesMenu(index)" v-else><i class="ph ph-minus"></i></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto py-4">
+                            <div class="form-group">
+                                <button type="submit" class="px-5 btn btn-primary">Save Categories Menu</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </AuthenticatedLayout>    
 </template>
@@ -184,9 +219,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Multiselect from 'vue-multiselect'
 import isEmpty from 'lodash/isEmpty'
 import debounce from 'lodash/debounce'
+import { map } from 'lodash'
 
 export default {
-    props:['products','FeaturedProducts','BestSelling','BestOffer', 'categories','topCategories','brands',"shopByBrands","brandsList","browseCategories"],	
+    props:['products','FeaturedProducts','BestSelling','BestOffer', 'categories','topCategories','brands',"shopByBrands","brandsList","browseCategories","categoriesMenu"],	
     data(){
         return {
                     filter : {
@@ -196,8 +232,13 @@ export default {
                                 data :this.$inertia.form({
                                                                                         type : 'FeaturedProducts',
                                                                                         idsToArray : []
-                            })
+                                }),
+                                categoriesMenu : this.$inertia.form({
+                                                                        menus  : this.categoriesMenu.data
+                                })
+
                     } ,
+                    categoriesShortList : map(this.categories, (category) => { return { id : category.id , name  : category.name } }),
                     selectedProducts : null,
                     selectedCategories : this.topCategories.categories,
                     selectedValue : null,     
@@ -241,14 +282,20 @@ export default {
             this.selectedBrowseCategories.filter( item => { this.form.data.idsToArray.push(item.id) });
             this.form.data.post(this.route('storeFeaturedOfferSellingProduct'));
             this.form.data.reset();
+        },
+        addNewLabelToCategoriesMenu(){
+            this.form.categoriesMenu.menus.push({ label : null , categories : null })
+        },
+        removeLabelToCategoriesMenu(index){
+            this.form.categoriesMenu.menus.splice(index,1);
+        },
+        saveCategoriesMenu(){
+            this.form.categoriesMenu.post(this.route('website.save.categories.menu'))
         }
-
     },
     components:{
         AuthenticatedLayout,
         Multiselect
-    },
-    mounted(){        
     }
 }
 </script>
