@@ -35,7 +35,13 @@ class Websites extends Controller
                                                         "shopByBrands" => Setting::where("name","ShopByBrands")->where("group","Website")->first(),
                                                         "brandsList" => Brand::select(['id','name','image'])->whereNotNull("image")->get(),
                                                         "browseCategories" => Setting::where("name","BrowseCategories")->where("group","Website")->first(),
-                                                        "categoriesMenu" =>  Setting::where("name","CategoriesMenu")->first()
+                                                        "categoriesMenu" =>  Setting::where("name","CategoriesMenu")->first(),
+                                                        "megaMenus" =>  Setting::where("name","MegaMenu")->first(),
+                                                        "categoriesWithSub" => Category::with(['subCategories' => function($query){
+                                                                                                        $query->whereHas("products");
+                                                                                }])
+                                                                                ->whereHas('subCategories')
+                                                                                ->where('parent_id',null)->get()   
                                                     ]);
     }
 
@@ -63,6 +69,12 @@ class Websites extends Controller
 
     public function saveCategoriesMenu(Request $request){
         Setting::where('name',"CategoriesMenu")->update([ "data" => $request->menus ]);
+        return back();
+    }
+
+    public function saveMegaMenu(Request $request){
+        //
+        Setting::where('name',"MegaMenu")->update([ "data" => $request->menus ]);
         return back();
     }
 

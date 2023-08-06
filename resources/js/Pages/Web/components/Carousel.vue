@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="card-body d-flex  flex-column py-2">
                                     <small>{{ isEmpty(product.category) ? '' : product.category.name }}</small>
-                                    <p class="mb-0 text-black" v-snip="{ lines: 2 }">{{ product.name }}</p>
+                                    <a :href="route('salonpe.product.detail',product.id)" class="mb-0 text-primary product-detail" v-snip="{ lines: 2 }">{{ product.name }}</a>
                                     <div class="product-price d-flex align-items-center justify-content-start mt-auto gap-0 gap-md-1 flex-wrap flex-md-nowrap" v-html="displayPriceHtml(product)"></div>
                                 </div>
                             </div>            
@@ -99,6 +99,10 @@
     --f-button-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
         rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
         rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+
+    .product-detail:hover{
+        opacity: .6;
     }
 
 

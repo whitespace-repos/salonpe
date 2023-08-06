@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
             ],
             "website" => Setting::where("name" , "Website")->first(),
             "categoriesMenu" =>  Setting::where("name","CategoriesMenu")->first(),
+            "megaMenus" => Setting::where("name","MegaMenu")->first(),
             'quillToolbar' => [
                                 ['bold', 'italic', 'underline', 'strike'], 
                                 ['link', 'blockquote'], 

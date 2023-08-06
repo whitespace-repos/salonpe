@@ -175,40 +175,70 @@
                 </form>
             </div>
 
+            
+							<!-- My messages -->
+								<div class="card-header d-flex align-items-center">
+									<h5 class="mb-0">Mega Menus</h5>
+									<div class="ms-auto d-flex align-items-center">
+                                        <template v-if="newMegaMenuFlag">
+                                            <span><input type="text" v-model="megaMenuTitle" class="form-control form-control-sm rounded-0" placeholder="Type Menu Title ... " /></span>
+										    <button class="btn btn-primary btn-sm rounded-0" @click="addmegaMenusInstance">Create </button>
+                                            <button class="btn btn-danger btn-sm rounded-0" @click="newMegaMenuFlag = false">Cancel </button>
+                                        </template>
+                                        <template v-else>
+                                            <button class="btn btn-success btn-sm" @click="newMegaMenuFlag = true">Create New Menu</button>
+                                        </template>										
+									</div>
+								</div>
 
-            <!-- Categories Menu -->
-            <div class="card-header fw-bold">Categories Menu</div>
-            <div class="card-body">
-                <form class="container" @submit.prevent="saveCategoriesMenu">
-                    <div class="row mb-2" v-for="(menu,index) in form.categoriesMenu.menus">
-                        <div class="col-2">
-                            <div class="form-group">
-                                <label class="form-label" v-if="index == 0">Menu Label</label>
-                                <input type="text" class="form-control" placeholder="Menu Label ..." v-model="menu.label"/>
-                            </div>                                
-                        </div>
 
-                        <div class="col-9">
-                            <div class="form-group">
-                                <label class="form-label" v-if="index == 0">Choose Categories </label>
-                                <multiselect placeholder="Choose Categories ..." v-model="menu.categories" label="name" track-by="name" :options="categoriesShortList" :multiple="true" :searchable="true"></multiselect>
-                            </div>                                
-                        </div>
+								<!-- Tabs -->
+			                	<ul class="nav nav-tabs nav-tabs-underline bg-primary bg-opacity-10 fw-semibold">
+									<li class="nav-item" v-for="(menu,index) in megaMenusInstance" :key="index">
+										<a :href="`#megamenu${index}`" class="nav-link" :class="{'active' : (index == 0) }" data-bs-toggle="tab">
+											{{ menu.title }}
+										</a>
+									</li>
+                                    <li class="nav-item align-self-center ms-4">
+                                        <a href="javascript:void(0)" class="btn  me-2 py-1 ms-auto align-items-center rounded-0  fw-semibold text-primary" @click="saveMegaMenu">Save Changes</a>
+                                    </li>
+								</ul>
+								<!-- /tabs -->
 
-                        <div class="col-1  d-flex align-items-end">
-                            <span class="btn btn-primary py-2 px-3" @click="addNewLabelToCategoriesMenu" v-if="index == 0"><i class="ph ph-plus"></i></span>
-                            <span class="btn btn-danger py-2 px-3" @click="removeLabelToCategoriesMenu(index)" v-else><i class="ph ph-minus"></i></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-auto py-4">
-                            <div class="form-group">
-                                <button type="submit" class="px-5 btn btn-primary">Save Categories Menu</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+
+								<!-- Tabs content -->
+								<div class="tab-content card-body">
+									<div class="tab-pane fade" :class="{'active show' : (index == 0) }" :id="`megamenu${index}`" v-for="(menu,index) in megaMenusInstance" :key="index">                                        
+                                        <div class="container">
+                                            <div class="row g-1 mb-2" v-for="(item,indx) in menu.items" :key="indx" >
+                                                <div class="col-auto">
+                                                    <select class="form-select" v-model="item.type">
+                                                        <option value="menu">Menu</option>
+                                                        <option value="link">Custom Link</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-2">
+                                                    <input class="form-control" placeholder="Menu Label" v-model="item.label"/>
+                                                </div>
+                                                <div class="col">
+                                                        <multiselect v-model="item.selectedCategories" :options="categoriesShortHand"  group-values="sub_categories" group-label="name" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true"  :group-select="false" placeholder="Type to search category" track-by="name" label="name"><span slot="noResult">Oops! No category found. Consider changing the search query.</span></multiselect>    
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button class="btn btn-primary" @click="addNewLabelToMegaMenu(menu.items)" v-if="indx == 0"><i class="ph ph-plus"></i></button>
+                                                    <button class="btn btn-danger" @click="removeLabelToMegaMenu(indx,menu.items)" v-else><i class="ph ph-minus"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <hr />                                            
+                                            <button class="btn btn-danger" @click="removeTabToMegaMenu(index)">Delete Menu</button>
+                                        </div>
+									</div>
+								</div>
+								<!-- /tabs content -->
+
+
+
+           
 
         </div>
     </AuthenticatedLayout>    
@@ -222,7 +252,7 @@ import debounce from 'lodash/debounce'
 import { map } from 'lodash'
 
 export default {
-    props:['products','FeaturedProducts','BestSelling','BestOffer', 'categories','topCategories','brands',"shopByBrands","brandsList","browseCategories","categoriesMenu"],	
+    props:['products','FeaturedProducts','BestSelling','BestOffer', 'categories','topCategories','brands',"shopByBrands","brandsList","browseCategories","categoriesMenu","categoriesWithSub","megaMenus"],	
     data(){
         return {
                     filter : {
@@ -243,7 +273,10 @@ export default {
                     selectedCategories : this.topCategories.categories,
                     selectedValue : null,     
                     selectedBrands : this.shopByBrands.brands,
-                    selectedBrowseCategories : this.browseCategories.categories          
+                    selectedBrowseCategories : this.browseCategories.categories,
+                    megaMenuTitle : '',
+                    newMegaMenuFlag : false,
+                    megaMenusInstance : this.megaMenus.data,         
         }
     },
     watch: {
@@ -255,6 +288,11 @@ export default {
 			}, 800),
 		},
 	},
+    computed:{
+        categoriesShortHand() {
+                return map(this.categoriesWithSub, (category) => { return { id : category.id , name  : category.name , sub_categories : map(category.sub_categories, (sub) => { return { id : sub.id , name : sub.name } }) } });
+        } 
+    },
     methods: {
         customLabel ({ name, category , sub_category }) {          
                 return `${name} ( ${ (!isEmpty(category)) ? category.name : '' } - ${ (!isEmpty(sub_category)) ? sub_category.name : '' } )`;           
@@ -283,14 +321,25 @@ export default {
             this.form.data.post(this.route('storeFeaturedOfferSellingProduct'));
             this.form.data.reset();
         },
-        addNewLabelToCategoriesMenu(){
-            this.form.categoriesMenu.menus.push({ label : null , categories : null })
+        addNewLabelToMegaMenu(items){
+            items.push({ type :'menu' , label : '' , categories : [] , selectedCategories : [] })
         },
-        removeLabelToCategoriesMenu(index){
-            this.form.categoriesMenu.menus.splice(index,1);
+        removeLabelToMegaMenu(index , items){
+            items.splice(index,1);
+        },
+        removeTabToMegaMenu(index){
+            this.megaMenusInstance.splice(index,1);
         },
         saveCategoriesMenu(){
             this.form.categoriesMenu.post(this.route('website.save.categories.menu'))
+        },
+        saveMegaMenu(){
+            this.$inertia.form({ menus : this.megaMenusInstance }).post(this.route('website.save.mega.menu'))
+        },
+        addmegaMenusInstance(){            
+            this.megaMenusInstance.push({ title : this.megaMenuTitle , items : [ { type :'menu' , label : '' , selectedCategories : [] }] })
+            this.megaMenuTitle = ''
+            this.newMegaMenuFlag = false
         }
     },
     components:{

@@ -80,7 +80,12 @@ class Settings extends Controller
             return Inertia::render('Settings/Contact' , [ "contact" => Setting::where('name','Contact')->first()]);
         }elseif($type == 'website'){
             $brands = Brand::select("id","name")->whereHas("products")->get(); 
-            $categories = Category::whereNull("parent_id")->get();
+            $categories = Category::with(['subCategories' => function($query){
+                                            $query->withCount('products');
+                                            $query->whereHas("products");
+                            }])
+                            ->whereHas("subCategories")
+                            ->where('parent_id',null)->get();
             return Inertia::render('Settings/Website' , [ 
                                         "website" => Setting::where('name','Website')->first(),
                                         "brands" => $brands,

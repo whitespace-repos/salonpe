@@ -47,7 +47,7 @@
                         <div class="col-6">
                             <div class="form-group mb-3">
                                 <label class="form-label">Categories</label>
-                                <multiselect placeholder="Categories ..." v-model="form.website.categories" label="name" track-by="name" :options="categories" :multiple="true" ></multiselect>
+                                <multiselect v-model="form.website.categories" :options="categoriesShortHand"  group-values="sub_categories" group-label="name" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true"  :group-select="false" placeholder="Type to search category" track-by="name" label="name"><span slot="noResult">Oops! No category found. Consider changing the search query.</span></multiselect>    
                             </div>  
                         </div>
 
@@ -89,6 +89,7 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Multiselect from 'vue-multiselect'
+import map from 'lodash/map'
 export default {
     props:["website", "brands", "categories"],
 	data() {
@@ -116,6 +117,11 @@ export default {
     },
     components:{
         AuthenticatedLayout, Multiselect
+    },
+    computed:{
+        categoriesShortHand() {
+                return map(this.categories, (category) => { return { id : category.id , name  : category.name , sub_categories : map(category.sub_categories, (sub) => { return { id : sub.id , name : sub.name } }) } });
+        } 
     }
 }
 </script>

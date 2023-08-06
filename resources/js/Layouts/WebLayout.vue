@@ -104,27 +104,7 @@
 							<inertia-link :href="route('salonpe.index')" class="nav-link" >Home</inertia-link>
 						  </li>
 						  <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="tv-shows.html"
-							  data-bs-toggle="dropdown">
-							  Categories 
-							</a>
-							<div class="dropdown-menu dropdown-large-menu">
-							  <div class="row">
-								<div class="col-12 col-xl-4" v-for="(menu,index) in $page.props.categoriesMenu.data" :key="index">
-								  <h6 class="large-menu-title text-muted">{{ menu.label }}</h6>
-								  <ul class="list-unstyled" style="font-size: .9em;">
-									<li v-for="category in menu.categories" :key="category.id"><a class="text-truncate" href="javascript:;">{{ category.name }}</a></li>								
-								  </ul>
-								</div>
-								<div class="col-12 col-xl-4 d-none d-xl-block">
-								  <div class="pramotion-banner1">
-									<img src="@/assets/web/images/gallery/menu-img.jpg" class="img-fluid" alt="" />
-								  </div>
-								</div>
-								<!-- end col-3 -->
-							  </div>
-							  <!-- end row -->
-							</div>
+							<inertia-link class="nav-link" :href="route('salonpe.product.filter')">Categories</inertia-link>
 						  </li>
 						  <li class="nav-item d-block d-md-none">
 								<inertia-link class="nav-link" :href="route('salonpe.aboutus')">About</inertia-link>
@@ -156,12 +136,48 @@
 					</div>						
 				  </nav>
 				  <img src="@/assets/web/images/salonpe.gif" class="logo-icon-gif  py-3 py-md-0"/>
-			</div>
-		</div>
+			</div>			
+		
 		<!--end top header wrapper-->
 		<!--start slider section-->
 		<!--start carousel-->
        
+		<!--  -->
+		<div class="primary-menu d-flex container-fluid bg-warning bg-opacity-10 mx-auto align-items-center">
+				<nav class="navbar navbar-expand-xl w-100 navbar-dark container mb-0 p-0">
+					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+					  <div class="offcanvas-header">
+						<div class="offcanvas-logo"><img src="@/assets/images/org/logo.jpeg" width="100" alt="">
+						</div>
+						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					  </div>
+					  <div class="offcanvas-body primary-menu">
+						<ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
+						  <li class="nav-item dropdown" v-for="(menu , index) in $page.props.megaMenus.data" :key="index" >
+							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret h-auto" href="tv-shows.html"
+							  data-bs-toggle="dropdown">
+							  {{ menu.title }} 
+							</a>
+							<div class="dropdown-menu dropdown-large-menu">
+							  <div class="row g-1">
+								<div class="col" v-for="(item , indx) in menu.items" :key="indx">
+								  <h6 class="large-menu-title text-muted" style="font-size: 13px;">{{ item.label }}</h6>
+								  <ul class="list-unstyled" style="font-size: .9em;">
+									<li v-for="category in item.selectedCategories" :key="category.id"><inertia-link class="text-truncate fw-normal" style="font-size: 12px;" :href="`${route('salonpe.product.filter')}?categories[]=${category.id}`">{{ category.name }}</inertia-link></li>								
+								  </ul>
+								</div>									
+								<!-- end col-3 -->
+							  </div>
+							  <!-- end row -->
+							</div>
+						  </li>
+						</ul>
+					  </div>					  
+					</div>						
+				  </nav>
+			</div>
+			<!-- / -->	
+	   </div>
         <!--end carousel-->
 		<!--end slider section-->
 		<!--start page wrapper -->
@@ -187,8 +203,8 @@
 							<div class="footer-section2">
 								<h6 class="ps-1 mb-4 text-uppercase fw-bold text-white">Categories</h6>
 								<ul class="list-unstyled">
-									<li class="mb-1" v-for="category in $page.props.website.data.categories" :key="category.id">
-										<a href="javascript:;"><i class='bx bx-chevron-right'></i> {{  category.name }}</a>
+									<li class="mb-1" v-for="category in $page.props.website.data.categories" :key="category.id">										
+										<inertia-link :href="`${route('salonpe.product.filter')}?categories[]=${category.id}`"><i class='bx bx-chevron-right'></i> {{ category.name }}</inertia-link>
 									</li>
 								</ul>
 							</div>
@@ -199,7 +215,7 @@
 								<h6 class="mb-4 text-uppercase fw-bold text-white">Brands</h6>
 								<ul class="list-unstyled">
 									<li class="mb-1" v-for="brand in $page.props.website.data.brands" :key="brand.id">
-										<a href="javascript:;"><i class='bx bx-chevron-right'></i> {{ brand.name }}</a>
+										<inertia-link :href="`${route('salonpe.product.filter')}?brands[]=${brand.id}`"><i class='bx bx-chevron-right'></i> {{ brand.name }}</inertia-link>
 									</li>
 								</ul>
 							</div>

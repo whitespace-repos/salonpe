@@ -8,6 +8,8 @@ use Setting;
 use Product;
 use Brand;
 use Banner;
+use Category;
+use Illuminate\Database\Eloquent\Builder;
 
 class SalonpeWeb extends Controller
 {
@@ -63,8 +65,44 @@ class SalonpeWeb extends Controller
 
 
     public function productDetail($id){
-        $products = Product::with("attributes.media")->find($id);
-        return Inertia::render("Web/ProductDetail", [ "product" => $products ]);
+        $product = Product::with("attributes.media")->find($id);
+        return Inertia::render("Web/ProductDetail", [ "product" => $product ]);
+    }
+
+    public function productFilter(Request $request){                        
+        //
+        return Inertia::render('Web/ProductFilter', [
+            'products' => Product::with('category',"attributes.media" , 'brand')
+                            ->where(function($query) use($request){ 
+                                //
+                                if($request->has('categories'))       
+                                    $query->whereIn('sub_category_id',$request->categories);
+
+                                if($request->has('brands'))       
+                                    $query->whereIn('brand_id',$request->brands);
+                            })
+                            ->paginate(20)
+                            ->onEachSide(0)
+                            ->withQueryString()
+                            ->through(fn ($product) => [
+                                'id' => $product->id,
+                                'name' => $product->name,
+                                'thumb_image' => $product->thumb_image,
+                                'created_at' => $product->created_at,
+                                'category' => empty($product->category) ? null : $product->category,
+                                'attributes' => empty($product->subCategory) ? null : $product->attributes,
+                                'brand' => $product->brand
+                            ]),
+            "categoriesWithSub" => Category::with(['subCategories' => function($query){
+                                                                        $query->withCount('products');
+                                                                        $query->whereHas("products");
+                                                 }])
+                                                 ->whereHas("subCategories")
+                                                 ->where('parent_id',null)->get() ,
+            "filteredCategories" => $request->has("categories") ? $request->categories  : [],
+            "filteredBrands" => $request->has("brands") ? $request->brands : [],
+            "brands" => Brand::select("id","name")->whereHas("products")->get()
+        ]);  
     }
 
 }

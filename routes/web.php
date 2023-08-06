@@ -46,7 +46,7 @@ Route::get('/account-orders',[MyAccount::class , 'orders'])->name("salonpe.accou
 Route::get('/account-addresses',[MyAccount::class , 'addresses'])->name("salonpe.account.addresses");
 Route::get('/account-detail',[MyAccount::class , 'detail'])->name("salonpe.account.detail");
 Route::get('/account-payment-method',[MyAccount::class , 'paymentMethod'])->name("salonpe.account.payment.method");
-Route::get('/product/filter', function () {    return Inertia::render("Web/ProductFilteration"); })->name("salonpe.product.filter");
+Route::get('/product/filter', [SalonpeWeb::class ,'productFilter'])->name("salonpe.product.filter");
 
 
 
@@ -99,6 +99,7 @@ Route::get("/website-landing", [ Websites::class , 'landing'])->name("website.pa
 Route::post("/store-featured-offer-selling-product",[ Websites::class, 'storeFeaturedOfferSellingProduct'])->name("storeFeaturedOfferSellingProduct");
 Route::get("/remove-featured-offer-selling-product/{id}/{type}",[ Websites::class, 'removeFeaturedOfferSellingProduct'])->name("removeFeaturedOfferSellingProduct");
 Route::post('save/categories/menu',[Websites::class,'saveCategoriesMenu'])->name("website.save.categories.menu");
+Route::post('save/mega/menu',[Websites::class,'saveMegaMenu'])->name("website.save.mega.menu");
 
 
 require __DIR__.'/auth.php';

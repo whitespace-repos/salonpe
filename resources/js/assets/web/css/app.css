@@ -275,7 +275,7 @@ a {
   
   
     .primary-menu .dropdown-large-menu {
-      width: 630px;
+      width:max-content;
       padding: 0.5rem;
     }
   
