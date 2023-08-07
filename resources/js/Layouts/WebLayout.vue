@@ -54,13 +54,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-xl order-4 order-xl-0">
+						<div class="col-12 col-xl-8 mx-auto order-4 order-xl-0">
 							<div class="input-group input-group-md flex-nowrap pb-3 pb-xl-0">
 								<input type="text" class="form-control w-100 border-dark border border-3" placeholder="Search for Products">
 								<button class="btn btn-dark  bg-yellow text-black text-semibold" type="button">Search</button>
 							</div>
 						</div>
-						<div class="col-auto d-none d-xl-flex">
+						<!-- <div class="col-auto d-none d-xl-flex">
 							<div class="d-flex align-items-center gap-3">
 								<div class="fs-1"><i class='bx bx-headphone'></i></div>
 								<div class="">
@@ -68,7 +68,7 @@
 									<h6 class="mb-0 text-white">{{ $page.props.website.data.contact }}</h6>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="col-auto ms-auto">
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
@@ -100,12 +100,12 @@
 					  </div>
 					  <div class="offcanvas-body primary-menu">
 						<ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-						  <li class="nav-item">
+						  <!-- <li class="nav-item">
 							<inertia-link :href="route('salonpe.index')" class="nav-link" >Home</inertia-link>
 						  </li>
 						  <li class="nav-item dropdown">
 							<inertia-link class="nav-link" :href="route('salonpe.product.filter')">Categories</inertia-link>
-						  </li>
+						  </li> -->
 						  <li class="nav-item d-block d-md-none">
 								<inertia-link class="nav-link" :href="route('salonpe.aboutus')">About</inertia-link>
 							</li>

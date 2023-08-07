@@ -20,7 +20,7 @@
 					</a>
 				</li>
 
-				<li class="nav-item nav-item-dropdown-lg dropdown">
+				<li class="nav-item nav-item-dropdown-lg dropdown d-none">
 					<a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="dropdown">
 						<i class="ph-squares-four"></i>
 					</a>
@@ -78,7 +78,7 @@
 					</div>
 				</li>
 
-				<li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2">
+				<li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2 d-none">
 					<a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="dropdown" data-bs-auto-close="outside">
 						<i class="ph-chats"></i>
 						<span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">8</span>
@@ -193,7 +193,7 @@
 						<div class="form-control-feedback-icon">
 							<i class="ph-magnifying-glass"></i>
 						</div>
-						<div class="dropdown-menu w-100" data-color-theme="light">
+						<div class="dropdown-menu w-100 d-none" data-color-theme="light">
 							<button type="button" class="dropdown-item">
 								<div class="text-center w-32px me-3">
 									<i class="ph-magnifying-glass"></i>
@@ -310,11 +310,11 @@
 						</div>
 					</div>
 
-					<a href="#" class="navbar-nav-link align-items-center justify-content-center w-40px h-32px rounded-pill position-absolute end-0 top-50 translate-middle-y p-0 me-1" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+					<a href="#" class=" d-none navbar-nav-link align-items-center justify-content-center w-40px h-32px rounded-pill position-absolute end-0 top-50 translate-middle-y p-0 me-1" data-bs-toggle="dropdown" data-bs-auto-close="outside">
 						<i class="ph-faders-horizontal"></i>
 					</a>
 
-					<div class="dropdown-menu w-100 p-3">
+					<div class="dropdown-menu w-100 p-3 d-none">
 						<div class="d-flex align-items-center mb-3">
 							<h6 class="mb-0">Search options</h6>
 							<a href="#" class="text-body rounded-pill ms-auto">
@@ -380,23 +380,23 @@
 
 			<ul class="nav flex-row justify-content-end order-1 order-lg-2">
 				<li class="nav-item ms-lg-2">
-					<a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#notifications">
+					<a href="javascript:void(0)" class="navbar-nav-link navbar-nav-link-icon rounded-pill">
 						<i class="ph-bell"></i>
-						<span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
+						<span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">0</span>
 					</a>
 				</li>
 
 				<li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2">
 					<a href="#" class="navbar-nav-link align-items-center rounded-pill p-1" data-bs-toggle="dropdown">
 						<div class="status-indicator-container">
-							<img src="@/assets/images/demo/users/face11.jpg" class="w-32px h-32px rounded-pill" alt="">
-							<span class="status-indicator bg-success"></span>
+							<i class="ph ph-user ph-lg"></i>
+							<!-- <span class="status-indicator bg-success"></span> -->
 						</div>
 						<span class="d-none d-lg-inline-block mx-lg-2">{{ $page.props.auth.user.name }}</span>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-end">
-						<a href="#" class="dropdown-item">
+						<!-- <a href="#" class="dropdown-item">
 							<i class="ph-user-circle me-2"></i>
 							My profile
 						</a>
@@ -417,7 +417,7 @@
 						<a href="#" class="dropdown-item">
 							<i class="ph-gear me-2"></i>
 							Account settings
-						</a>
+						</a> -->
 						<inertia-link :href="route('logout')" method="post" as="button" class="dropdown-item">
 							<i class="ph-sign-out me-2"></i>
 							Log Out

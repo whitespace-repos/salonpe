@@ -92,7 +92,7 @@
 								<div class="card bg-primary text-white">
 									<div class="card-body">
 										<div class="d-flex align-items-center">
-											<h3 class="mb-0">$18,390</h3>
+											<h3 class="mb-0">₹18,390</h3>
 											<div class="ms-auto">
 												<a class="text-white" data-card-action="reload">
 													<i class="ph-arrows-clockwise"></i>
@@ -102,7 +102,7 @@
 										
 										<div>
 											Today's revenue
-											<div class="fs-sm opacity-75">$37,578 avg</div>
+											<div class="fs-sm opacity-75">₹37,578 avg</div>
 										</div>
 									</div>
 

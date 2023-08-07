@@ -1,10 +1,10 @@
 <template>
     <!-- Footer -->
     <div class="navbar navbar-sm navbar-footer border-top">
-        <div class="container-fluid">
+        <div class="container-fluid justify-content-center">
             <span>&copy; 2022 <a href="/"><img src="@/assets/images/org/logo.jpeg" style="width: 100px;" class="ms-2"/></a></span>
 
-            <ul class="nav">
+            <ul class="nav d-none">
                 <li class="nav-item">
                     <a href="https://kopyov.ticksy.com/" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
                         <div class="d-flex align-items-center mx-md-1">

@@ -3,7 +3,7 @@
 
 	<AuthenticatedLayout>
 		<!-- Info alert -->
-		<div class="alert alert-success alert-dismissible">
+		<div class="alert alert-success alert-dismissible d-none">
 			<div class="alert-heading fw-semibold">Content sidebar</div>
 			Content sidebar is used inside content area, has fixed width and supports all sidebar components. By default, content sidebar height fills all available vertical space. You can easily change this behaviour if you want content sidebar height to match inner content height. Simply add <code>.align-items-[breakpoint]-start</code> class to inner container.
 			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -14,7 +14,7 @@
 		<main-chart />	
 
 		<!-- Dashboard content -->
-		<div class="row">
+		<div class="row d-none">
 			<div class="col-xl-8">
 
 				<!-- Marketing campaigns -->
