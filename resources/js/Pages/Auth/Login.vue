@@ -20,7 +20,7 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('login'), {
-        onError: () => { this.$toast.error('Invalid Credentials')},
+        onSuccess: () => form.reset('password'),
     });
 };
 </script>
