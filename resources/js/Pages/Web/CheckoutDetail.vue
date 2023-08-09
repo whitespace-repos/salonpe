@@ -4,13 +4,13 @@
         <div class="card rounded-0">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-3">
-                    <div class="">
+                    <!-- <div class="">
                         <img src="@/assets/web/images/avatars/avatar-1.png" width="90" alt="" class="rounded-circle p-1 border">
                     </div>
                     <div class="ms-2">
                         <h6 class="mb-0">Jhon Michle</h6>
                         <p class="mb-0">michle@example.com</p>
-                    </div>
+                    </div> -->
                     <div class="ms-auto">	
                         <button class="btn btn-light btn-ecomm me-3" @click="addNewAddressFlag = true">Add New Address</button>
                         <inertia-link :href="route('salonpe.account.detail')" class="btn btn-light btn-ecomm"><i class='bx bx-edit'></i> Edit Profile</inertia-link>

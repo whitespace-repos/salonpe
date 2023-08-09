@@ -4,10 +4,11 @@
 	<div class="wrapper">
 		<!--start top header wrapper-->
 		<div class="header-wrapper fixed-top">
+			<img src="@/assets/web/images/salonpe.gif" class="logo-icon-gif d-none d-sm-flex" style=" position: absolute; right: 0;bottom: 0; padding: 0 !important;"/>
 			<div class="top-menu">
 				<div class="container">
 					<nav class="navbar navbar-expand">
-						<div class="shiping-title d-none d-sm-flex">Welcome to Variety Cosmetics, Pune</div>
+						<div class="shiping-title small">Welcome to Variety Cosmetics, Pune</div>
 						<ul class="navbar-nav ms-auto d-none d-lg-flex">
 							<li class="nav-item">
 								<inertia-link class="nav-link" :href="route('salonpe.account.order')">Track Order</inertia-link>
@@ -60,21 +61,40 @@
 								<button class="btn btn-dark  bg-yellow text-black text-semibold" type="button">Search</button>
 							</div>
 						</div>
-						<!-- <div class="col-auto d-none d-xl-flex">
+						<div class="col-auto d-none d-xl-flex">
 							<div class="d-flex align-items-center gap-3">
-								<div class="fs-1"><i class='bx bx-headphone'></i></div>
-								<div class="">
-									<p class="mb-0">CALL US NOW</p>
-									<h6 class="mb-0 text-white">{{ $page.props.website.data.contact }}</h6>
-								</div>
+								<nav class="navbar navbar-expand-xl w-100 navbar-dark container mb-0 p-0">
+									<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+									<div class="offcanvas-header">
+										<div class="offcanvas-logo"><img src="@/assets/images/org/logo.jpeg" width="100" alt="">
+										</div>
+										<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+									</div>
+									<div class="offcanvas-body primary-menu">
+										<ul class="navbar-nav justify-content-start flex-grow-1 gap-1">										
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle dropdown-toggle-nocaret  h-auto text-warning" href="javascript:;" data-bs-toggle="dropdown">
+												Account
+												</a>
+												<ul class="dropdown-menu">
+													<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.dashboard')">Dashboard</inertia-link></li>
+													<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.order')">My Orders</inertia-link></li>
+													<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.detail')">User Detail</inertia-link></li>
+													<li v-if="$page.props.auth.user == null"><inertia-link class="dropdown-item" :href="route('account.create')">Register</inertia-link></li>
+													<li v-if="$page.props.auth.user == null"><inertia-link class="dropdown-item" :href="route('account.show','login')">Login</inertia-link></li>
+													<li v-if="$page.props.auth.user != null" class="border-top"><inertia-link :href="route('logout')" method="post" as="button"  class="dropdown-item">Logout</inertia-link></li>
+												</ul>
+											</li>
+										</ul>
+									</div>					  
+									</div>						
+								</nav>
 							</div>
-						</div> -->
+						</div> 
 						<div class="col-auto ms-auto">
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav">
-										<li class="nav-item" v-if="$page.props.auth.user != null"><inertia-link :href="route('salonpe.account.dashboard')" class="nav-link cart-link text-muted"><i class='bx bx-user'></i></inertia-link>
-										</li>
 										<li class="nav-item"><inertia-link :href="route('wishlists')" class="nav-link cart-link  text-muted position-relative wishlist"><span class="alert-count shadow-lg">{{ ( $page.props.auth.user == null )  ? 0 : $page.props.auth.user.wishlists_count}}</span><i class='bx bx-heart'></i> </inertia-link>
 										</li>
 										<li class="nav-item dropdown dropdown-large">
@@ -90,7 +110,7 @@
 					<!--end row-->
 				</div>
 			</div>
-			<div class="primary-menu d-flex container mx-auto align-items-center">
+			<div class="primary-menu d-flex container mx-auto align-items-center d-flex d-sm-none">
 				<nav class="navbar navbar-expand-xl w-100 navbar-dark container mb-0 p-0">
 					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
 					  <div class="offcanvas-header">
@@ -100,12 +120,9 @@
 					  </div>
 					  <div class="offcanvas-body primary-menu">
 						<ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-						  <!-- <li class="nav-item">
-							<inertia-link :href="route('salonpe.index')" class="nav-link" >Home</inertia-link>
+						  <li class="nav-item">
+							<inertia-link :href="route('salonpe.index')" style="visibility: hidden;" class="nav-link" >Home</inertia-link>
 						  </li>
-						  <li class="nav-item dropdown">
-							<inertia-link class="nav-link" :href="route('salonpe.product.filter')">Categories</inertia-link>
-						  </li> -->
 						  <li class="nav-item d-block d-md-none">
 								<inertia-link class="nav-link" :href="route('salonpe.aboutus')">About</inertia-link>
 							</li>
@@ -114,28 +131,12 @@
 							</li>
 							<li class="nav-item d-block d-md-none">
 								<inertia-link class="nav-link" :href="route('salonpe.contactus')">Contact</inertia-link>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-								Account
-								</a>
-								<ul class="dropdown-menu">
-									<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.dashboard')">Dashboard</inertia-link>
-									</li>
-									<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.order')">My Orders</inertia-link>
-									</li>
-									<li v-if="$page.props.auth.user != null"><inertia-link class="dropdown-item" :href="route('salonpe.account.detail')">User Detail</inertia-link>
-									</li>
-									<li v-if="$page.props.auth.user == null"><inertia-link class="dropdown-item" :href="route('account.create')">Register</inertia-link></li>
-									<li v-if="$page.props.auth.user == null"><inertia-link class="dropdown-item" :href="route('account.show','login')">Login</inertia-link></li>
-								</ul>
-							</li>
-						  
+							</li>						  
 						</ul>
 					  </div>					  
 					</div>						
 				  </nav>
-				  <img src="@/assets/web/images/salonpe.gif" class="logo-icon-gif  py-3 py-md-0"/>
+				  <img src="@/assets/web/images/salonpe.gif" class="logo-icon-gif  py-3 py-md-0 d-sm-none d-flex"/>
 			</div>			
 		
 		<!--end top header wrapper-->
@@ -143,18 +144,13 @@
 		<!--start carousel-->
        
 		<!--  -->
-		<div class="primary-menu d-flex container-fluid bg-warning bg-opacity-10 mx-auto align-items-center">
+		<div class="primary-menu d-flex container-fluid bg-black mx-auto align-items-center ">
 				<nav class="navbar navbar-expand-xl w-100 navbar-dark container mb-0 p-0">
-					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
-					  <div class="offcanvas-header">
-						<div class="offcanvas-logo"><img src="@/assets/images/org/logo.jpeg" width="100" alt="">
-						</div>
-						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					  </div>
+					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">					 
 					  <div class="offcanvas-body primary-menu">
 						<ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
-						  <li class="nav-item dropdown" v-for="(menu , index) in $page.props.megaMenus.data" :key="index" >
-							<a class="nav-link dropdown-toggle dropdown-toggle-nocaret h-auto" href="tv-shows.html"
+						  <li class="nav-item dropdown bg-black" v-for="(menu , index) in $page.props.megaMenus.data" :key="index" >
+							<a class="nav-link  dropdown-toggle hover-border-bottom-warning dropdown-toggle-nocaret h-auto bg-black text-white" href="tv-shows.html"
 							  data-bs-toggle="dropdown">
 							  {{ menu.title }} 
 							</a>
@@ -163,7 +159,7 @@
 								<div class="col" v-for="(item , indx) in menu.items" :key="indx">
 								  <h6 class="large-menu-title text-muted" style="font-size: 13px;">{{ item.label }}</h6>
 								  <ul class="list-unstyled" style="font-size: .9em;">
-									<li v-for="category in item.selectedCategories" :key="category.id"><inertia-link class="text-truncate fw-normal" style="font-size: 12px;" :href="`${route('salonpe.product.filter')}?categories[]=${category.id}`">{{ category.name }}</inertia-link></li>								
+									<li v-for="category in item.selectedCategories" :key="category.id"><inertia-link class="text-truncate fw-norma" style="font-size: 12px;" :href="`${route('salonpe.product.filter')}?categories[]=${category.id}`">{{ category.name }}</inertia-link></li>								
 								  </ul>
 								</div>									
 								<!-- end col-3 -->
@@ -175,6 +171,7 @@
 					  </div>					  
 					</div>						
 				  </nav>
+				  
 			</div>
 			<!-- / -->	
 	   </div>
@@ -262,13 +259,14 @@
 
 </template>
 
-
-<script setup>
+<script>
     import "@/assets/web/js/bootstrap.bundle.min.js";
     // import "@/assets/web/plugins/OwlCarousel/js/owl.carousel.min.js"
     // import "@/assets/web/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js"
     import "@/assets/web/css/web.css";    
     //
-
-	defineProps(['categoriesMenu'])
+	export default {
+		props : ['categoriesMenu'],
+		data : (prop) => ({ accountDropDown : false })
+	}
 </script>

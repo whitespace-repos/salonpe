@@ -12,14 +12,6 @@
             <div class="card-body">
                 <div class="w-50 d-flex">
                     <div class="me-1">
-                        <label>Filter By</label>
-                        <select v-model="form.by" class="form-select w-auto">
-                            <option value="name">Name</option>
-                            <option value="created_at">Created At</option>
-                        </select>					
-                    </div>
-
-                    <div class="me-1">
                         <label>Filter By Category</label>
                         <select v-model="form.category" class="form-select w-auto">
                             <option value="">Choose Category</option>

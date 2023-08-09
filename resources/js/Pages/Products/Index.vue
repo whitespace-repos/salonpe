@@ -12,24 +12,21 @@
 
             <div class="card-body">
                 <div class="w-50 d-flex">
-                    <div class="me-1">
+                    <!-- <div class="me-1">
                         <label>Filter By</label>
                         <select v-model="form.by" class="form-select w-auto">
                             <option value="name">Name</option>
                             <option value="email">Type</option>
                             <option value="created_at">Created At</option>
                         </select>					
-                    </div>
+                    </div> -->
 
                     <div class="me-1">
                         <label>Category</label>
-                        <select v-model="form.category" class="form-select w-auto">
+                        <select v-model="form.category" class="form-select w-auto" placeholder="Choose">
                             <option v-for="category in categories" :key="category.id" v-html="category.name" :value="category.id"></option>
                         </select>					
                     </div>
-
-                    
-
                     <div>
                         <label></label>
                         <input class="form-control d-flex-grow"  placeholder="Filter brands ..." v-model="form.search"/>

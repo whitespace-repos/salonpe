@@ -69,10 +69,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-grid" style="background: #fecd07">
-                                <div class="row row-cols-2 row-cols-md-5 row-cols-lg-5 row-cols-xl-5 row-cols-xxl-5 filter-grid-design" v-if="productsInstance != null">
+                            <div class="product-grid">
+                                <div class="row row-cols-2 row-cols-md-5 row-cols-lg-5 row-cols-xl-5 row-cols-xxl-5 g-0" v-if="productsInstance != null">
                                     <div class="col" v-for="product in productsInstance.data" :key="product.id">
-                                        <div class="card"  style="height:22em  !important">
+                                        <div class="card rounded-0"  style="height:22em  !important; border: 1.2px solid #fecd07;">
                                             <div class="position-relative overflow-hidden">
                                                 <div class="quick-view position-absolute start-0 bottom-0 end-0 p-0">
                                                     <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" @click="quickPreview(product)" class="p-2">Quick View</a>

@@ -75,7 +75,7 @@
                         
                         <div class="col-12">
                             <div class="form-group mb-3">  
-                                <textarea class="form-control" placeholder="Product Additional Description ...." v-model="form.productAttribute.additional_description"></textarea>
+                                <textarea class="form-control" placeholder="Attribute Additional Description ...." v-model="form.productAttribute.additional_description"></textarea>
                             </div>
                         </div>
 

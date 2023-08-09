@@ -9,7 +9,7 @@
         <section class="py-4">
             <div class="container">
                 <h5 class="mb-4 d-flex"><i class="bx bxs-heart me-2 fs-4"></i>Wishlists</h5>
-                <div class="product-grid">
+                <div class="product-grid" v-if="wishlists != null && wishlists.length  != 0">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 g-4">
                         <div class="col" v-for="wishlist in wishlists" :key="wishlist.id">
                             <div class="card rounded-0 border h-100 ">
@@ -34,6 +34,11 @@
                         </div>                       
                     </div>
                     <!--end row-->
+                </div>
+                <div class="card card-body w-md-50 shadow-none text-center mx-auto" v-else>
+                    <i class='bx bx-cart-add display-1'></i>
+                    <p>Your wishlist is empty ! Please add some item to wishlist </p>
+                    <inertia-link :href="route('salonpe.index')" class="btn btn-warning rounded-2 mx-auto px-5" href="index.html">Go back shopping</inertia-link>
                 </div>
             </div>
         </section>

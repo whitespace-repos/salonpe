@@ -28,16 +28,16 @@
             <div class="sidebar-section">
                 <ul class="nav nav-sidebar mb-4" data-nav-type="accordion">
                     <!-- Main -->
-                    <li class="nav-item-header">
+                   <!-- <li class="nav-item-header">
                         <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">Main</div>
                         <i class="ph-dots-three sidebar-resize-show"></i>
                     </li>
-                    <li class="nav-item">                        
+                     <li class="nav-item">                        
                         <inertia-link :href="route('dashboard')" class="nav-link" :class="{ 'active': route().current('dashboard') }">
                             <i class="ph-circles-four"></i>
                             <span>Dashboard</span>
                         </inertia-link>
-                    </li>
+                    </li> -->
 
                     <!-- Product Panel -->
                     <li class="nav-item-header">

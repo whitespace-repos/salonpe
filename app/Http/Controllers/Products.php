@@ -25,7 +25,7 @@ class Products extends Controller
         return Inertia::render('Products/Index', [
             'filters' => ['search', 'trashed'],
             'categories' => Category::whereNull('parent_id')->get(),
-            'products' => Product::with('category','subCategory')->orderBy('id')
+            'products' => Product::with('category','subCategory')
                             ->where(function($query) use($request){
                                 if($request->has("search")){
                                     $searchBy = ($request->has("by")) ? $request->by : "name";
@@ -35,6 +35,7 @@ class Products extends Controller
                                     $query->where("category_id",$request->category);
                                 
                             })
+                            ->orderBy('created_at','desc')
                             ->paginate(10)
                             ->onEachSide(0)
                             ->withQueryString()
@@ -89,7 +90,7 @@ class Products extends Controller
         
         foreach($request->file("images") as $file){
             $path = $file->store('products/'.$product->id.'/thumb','public');
-            $product->thumb_image = $path;
+            $product->thumb_image = "/storage/".$path;
             $product->save();
         }
         return redirect()->route('product.index');

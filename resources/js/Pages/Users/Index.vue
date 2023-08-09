@@ -8,14 +8,6 @@
 
             <div class="card-body">
                 <div class="w-50 d-flex">
-                    <div class="me-1">
-                        <label>Filter By</label>
-                        <select v-model="form.by" class="form-select w-auto">
-                            <option value="name">Name</option>
-                            <option value="created_at">Created At</option>
-                        </select>					
-                    </div>
-
                     <div>
                         <label></label>
                         <input class="form-control d-flex-grow"  placeholder="Filter brands ..." v-model="form.search"/>
